@@ -98,9 +98,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '22') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__498']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__535']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -126,14 +126,57 @@ describe "Sharing Tools" do
 	@driver.manage.window.maximize
 	sleep(2)
 	@driver.save_screenshot "Screenshots/dashboard.png"
+	
+	#update shipping address
+	@driver.find_element(:css, "span.header-user-name").click
+	sleep(1)
+    @driver.find_element(:link, "Shipping Address").click
+	sleep(1)
+    @driver.find_element(:id, "member_address_2").clear
+    @driver.find_element(:id, "member_address_2").send_keys @config['signup']['address1']
+	sleep(1)
+    @driver.find_element(:id, "member_address_1").clear
+    @driver.find_element(:id, "member_address_1").send_keys @config['signup']['address2']
+	sleep(1)
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_state")).select_by(:text, @config['signup']['state'])
+	sleep(1)
+    @driver.find_element(:id, "member_city").clear
+    @driver.find_element(:id, "member_city").send_keys @config['signup']['city']
+	sleep(1)
+    @driver.find_element(:id, "member_zip_code").clear
+    @driver.find_element(:id, "member_zip_code").send_keys @config['signup']['zip']
+	sleep(1)
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
+	sleep(1)
+    @driver.find_element(:name, "commit").click
+	
+	#connect facebook
+	@driver.find_element(:css, "span.header-user-name").click
+   if @driver.find_element(:css, "div.col-sm-9").displayed?
+   puts 'connected already'
+   else
+   @driver.find_element(:link, "Connect").click
+    sleep(1)
+	@driver.find_element(:id, "email").clear
+    @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']
+    sleep(2)
+    @driver.find_element(:id, "pass").clear
+    @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
+    sleep(1)
+    @driver.find_element(:id, "u_0_2").click
+	end
+	
+	#goto activity
+	sleep(2)
+	@driver.find_element(:link, "Dashboard").click
 	@driver.find_element(:link, "FB Upload Activity").click
 	sleep(2)
 	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
-	@driver.find_element(:css, "input.btn-color[type='submit']").click
-	sleep(2)
-	@driver.find_element(:css, "input.btn-color[type='submit']").click
-	sleep(4)
+	#@driver.find_element(:css, "input.btn-color[type='submit']").click
+	#sleep(2)
+	#@driver.find_element(:css, "input.btn-color[type='submit']").click
+	#sleep(4)
 
 	
 	buttons = @driver.find_elements(:css, "div.sharing-list-buttons")
