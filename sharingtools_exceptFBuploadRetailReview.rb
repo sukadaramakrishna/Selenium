@@ -23,10 +23,14 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    create_activity()
-	mission_logic()
-	sleep(180)
-	check_activity()
+    #create_activity()
+	#mission_logic()
+	#sleep(180)
+	login()
+	update_shippingaddress()
+	connect_FbTwIns()
+	sharing_activity()
+	
   end
   
   def create_activity()
@@ -239,7 +243,7 @@ describe "Sharing Tools" do
 	
  end
   
-  def check_activity()
+  def login()
 	@driver.get(@config['member']['base_url']	+ "/home")
     @driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
@@ -251,6 +255,73 @@ describe "Sharing Tools" do
 	@driver.manage.window.maximize
 	sleep(2)
 	@driver.save_screenshot "Screenshots/dashboard.png"
+	end
+	def update_shippingaddress()
+	#update shipping address
+	@driver.find_element(:css, "span.header-user-name").click
+	sleep(1)
+    @driver.find_element(:link, "Shipping Address").click
+	sleep(1)
+    @driver.find_element(:id, "member_address_2").clear
+    @driver.find_element(:id, "member_address_2").send_keys @config['signup']['address1']
+	sleep(1)
+    @driver.find_element(:id, "member_address_1").clear
+    @driver.find_element(:id, "member_address_1").send_keys @config['signup']['address2']
+	sleep(1)
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_state")).select_by(:text, @config['signup']['state'])
+	sleep(1)
+    @driver.find_element(:id, "member_city").clear
+    @driver.find_element(:id, "member_city").send_keys @config['signup']['city']
+	sleep(1)
+    @driver.find_element(:id, "member_zip_code").clear
+    @driver.find_element(:id, "member_zip_code").send_keys @config['signup']['zip']
+	sleep(1)
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
+	sleep(1)
+    @driver.find_element(:name, "commit").click
+end
+def connect_FbTwIns()
+@driver.find_element(:css, "span.header-user-name").click
+
+	#connect facebook
+    @driver.find_element(:link, "Connect").click
+	sleep(1)
+	@driver.find_element(:id, "email").clear
+    @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']
+    sleep(2)
+    @driver.find_element(:id, "pass").clear
+    @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
+    sleep(1)
+    @driver.find_element(:id, "u_0_2").click
+
+	#connect twitter
+    @driver.find_element(:link, "Connect").click
+	sleep(1)
+    @driver.find_element(:id, "username_or_email").clear
+    @driver.find_element(:id, "username_or_email").send_keys @config['signup']['email_twitter']
+	sleep(1)
+	@driver.find_element(:id, "password").clear
+    @driver.find_element(:id, "password").send_keys @config['signup']['pass_twitter']
+	sleep(1)
+    @driver.find_element(:id, "allow").click
+	
+	#connect instagram
+    @driver.find_element(:link, "Connect").click
+	sleep(1)
+    @driver.find_element(:id, "id_username").clear
+    @driver.find_element(:id, "id_username").send_keys @config['signup']['email_instagram']
+	sleep(1)
+    @driver.find_element(:id, "id_password").clear
+    @driver.find_element(:id, "id_password").send_keys @config['signup']['pass_instagram']
+	sleep(1)
+    @driver.find_element(:css, "input.button-green").click
+	sleep(2)
+	@driver.save_screenshot "Screenshots/connect_to_socialmedia.png"
+	end
+	
+	def sharing_activity()
+	@driver.find_element(:link, "Dashboard").click
+	sleep(2)
 	@driver.find_element(:link, "Sharing Tools Activity").click
 	sleep(2)
 	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click

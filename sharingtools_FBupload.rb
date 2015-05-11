@@ -26,7 +26,10 @@ describe "Sharing Tools" do
     #create_activity()
 	#mission_logic()
 	#sleep(180)
-	check_activity()
+	login()
+	update_shippingaddress()
+	#connect_facebook()
+	fb_uploadphoto()
   end
   
   def create_activity()
@@ -114,7 +117,7 @@ describe "Sharing Tools" do
 	
  end
   
-  def check_activity()
+  def login()
 	@driver.get(@config['member']['base_url']	+ "/home")
     @driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
@@ -126,7 +129,8 @@ describe "Sharing Tools" do
 	@driver.manage.window.maximize
 	sleep(2)
 	@driver.save_screenshot "Screenshots/dashboard.png"
-	
+	end
+def update_shippingaddress()
 	#update shipping address
 	@driver.find_element(:css, "span.header-user-name").click
 	sleep(1)
@@ -149,12 +153,14 @@ describe "Sharing Tools" do
 	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
 	sleep(1)
     @driver.find_element(:name, "commit").click
-	
+end
+def connect_facebook()
 	#connect facebook
 	@driver.find_element(:css, "span.header-user-name").click
-   if @driver.find_element(:css, "div.col-sm-9").displayed?
-   puts 'connected already'
-   else
+  #if @driver.find_element(:css, "div.col-sm-9").displayed?
+  #puts 'connected already'
+  #end
+   if @driver.find_element(:css, "a.btn.btn-facebook-connect")
    @driver.find_element(:link, "Connect").click
     sleep(1)
 	@driver.find_element(:id, "email").clear
@@ -164,11 +170,16 @@ describe "Sharing Tools" do
     @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
     sleep(1)
     @driver.find_element(:id, "u_0_2").click
+	puts"element appears"
+	else
+	puts "element not present"
 	end
-	
+end
+def fb_uploadphoto()
 	#goto activity
-	sleep(2)
+	
 	@driver.find_element(:link, "Dashboard").click
+	sleep(2)
 	@driver.find_element(:link, "FB Upload Activity").click
 	sleep(2)
 	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
