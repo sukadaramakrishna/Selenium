@@ -34,6 +34,8 @@ describe "ContentCheckActivity" do
     @driver.find_element(:id, "admin_password").send_keys @config['admin']['pass']
     @driver.find_element(:name, "commit").click
 	sleep(2)
+	@driver.manage.window.maximize
+	sleep(2)
     @driver.find_element(:link, "Mission Hubs").click
 	sleep(1)
     @driver.find_element(:link, "New Mission Hub").click
@@ -57,23 +59,17 @@ describe "ContentCheckActivity" do
     @driver.find_element(:css, "textarea.test-activity-tagline").clear
     @driver.find_element(:css, "textarea.test-activity-tagline").send_keys "Mission offer"
 	sleep(1)
-	@driver.find_element(:css, "textarea.test-activity-description").clear
-    @driver.find_element(:css, "textarea.test-activity-description").send_keys "Mission Details"
-	sleep(1)
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Mission Details']").click
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Mission Details']").clear
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Mission Details']").send_keys "Mission details"
+    sleep(1)
     @driver.find_element(:id, "switch_cb_activity.page.show_details").click
     sleep(2)
-	
-    @driver.find_element(:css, "textarea.test-activity-details").clear
-    @driver.find_element(:css, "textarea.test-activity-details").send_keys "Description of the product"
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").click
+    @driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").clear
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").send_keys "Description of the product"
 	sleep(2)
-	#Image switch not working
-    #@driver.find_element(:id, "switch_cb_activity.page.show_image").click
-	#sleep(1)
-    # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-    # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
-    #@driver.find_element(:css, "button.b-upload-dropzone__btn").click
-    #@driver.find_element(:xpath, "(//button[@type='button'])[8]").click
-	#sleep(1)
+	
 	@driver.find_element(:css, "input.mission-goal").clear
 	@driver.find_element(:css, "input.mission-goal").send_keys "10"
 	sleep(1)
@@ -89,12 +85,18 @@ describe "ContentCheckActivity" do
     @driver.find_element(:css, "textarea.test-activity-tagline").clear
     @driver.find_element(:css, "textarea.test-activity-tagline").send_keys "Mission offer (offer)"
 	sleep(1)
-    @driver.find_element(:css, "textarea.test-activity-description").clear
-    @driver.find_element(:css, "textarea.test-activity-description").send_keys "Mission Details (offer)"
+  @driver.find_element(:css, "div.angular-medium-editor").click
+	@driver.find_element(:css, "div.angular-medium-editor").clear
+	@driver.find_element(:css, "div.angular-medium-editor").send_keys "Mission details (offer)"
+    sleep(1)
+	@driver.find_element(:id, "switch_cb_activity.offer_page.show_details").click
 	sleep(1)
-	@driver.find_element(:css, "textarea.test-activity-details").clear
-    @driver.find_element(:css, "textarea.test-activity-details").send_keys "Description of the product (offer)"
+	@driver.find_element(:id, "switch_cb_activity.offer_page.show_details").click
 	sleep(1)
+	@driver.find_element(:css, "div.angular-medium-editor")[last()].click
+    @driver.find_element(:css, "div.angular-medium-editor")[last()].clear
+	@driver.find_element(:css, "div.angular-medium-editor")[last()].send_keys "Description of the product (offer)"
+	sleep(2)
 	
     
     @driver.find_element(:css, "button.test-activity-save").click
