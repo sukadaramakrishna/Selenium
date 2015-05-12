@@ -36,6 +36,7 @@ describe "CreateSurvey" do
     @driver.find_element(:id, "admin_password").clear
     @driver.find_element(:id, "admin_password").send_keys @config['admin']['pass']
     @driver.find_element(:name, "commit").click
+	@driver.manage.window.maximize
     @driver.find_element(:link, "Mission Hubs").click
     @driver.find_element(:link, "New Mission Hub").click
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
@@ -194,6 +195,37 @@ describe "CreateSurvey" do
 	sleep(1)
 	
     @driver.find_element(:link, "Survey ABC").click
+	sleep(1)
+	
+	@driver.find_element(:css, "td.table-title").click
+	sleep(2)
+	
+	#scroll
+	sleep(1)
+	@driver.execute_script("scroll(0, 400);")
+	sleep(4)
+
+	 @driver.find_element(:css, "strong.q-list-type-reward").click
+
+	
+	@driver.find_element(:css, "input.reward-points-field").clear
+	@driver.find_element(:css, "input.reward-points-field").send_keys "10"
+	sleep(2)
+	@driver.find_element(:xpath, "(//button[@type='button'])[44]").click
+	sleep(2)
+   @driver.find_element(:css, "strong.q-list-type-badge").click
+	sleep(2)
+	puts "abc"
+	@driver.execute_script('$(\'input.js-badge-image-field[type="file"]\').attr("style", "");');
+	sleep(1)
+	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
+	sleep(3)
+	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
+	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
+	@driver.find_element(:xpath, "(//button[@type='button'])[46]").click
+	sleep(2)
+	
+	@driver.find_element(:link, "Survey ABC").click
 	sleep(1)
 	end
 	def survey_missionlogic

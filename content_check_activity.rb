@@ -67,7 +67,7 @@ describe "ContentCheckActivity" do
     sleep(2)
 	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").click
     @driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").clear
-	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").send_keys "Description of the product"
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").send_keys "Description of the product(offer)"
 	sleep(2)
 	
 	@driver.find_element(:css, "input.mission-goal").clear
@@ -81,25 +81,24 @@ describe "ContentCheckActivity" do
 	sleep(1)
     @driver.find_element(:css, "textarea.mission-page-title").clear
     @driver.find_element(:css, "textarea.mission-page-title").send_keys "Activity Content Check (offer)"
-   sleep(1)
+    sleep(1)
     @driver.find_element(:css, "textarea.test-activity-tagline").clear
     @driver.find_element(:css, "textarea.test-activity-tagline").send_keys "Mission offer (offer)"
 	sleep(1)
-  @driver.find_element(:css, "div.angular-medium-editor").click
+	
+	@driver.find_element(:css, 'div.row').click
 	@driver.find_element(:css, "div.angular-medium-editor").clear
 	@driver.find_element(:css, "div.angular-medium-editor").send_keys "Mission details (offer)"
-    sleep(1)
-	@driver.find_element(:id, "switch_cb_activity.offer_page.show_details").click
-	sleep(1)
-	@driver.find_element(:id, "switch_cb_activity.offer_page.show_details").click
-	sleep(1)
-	@driver.find_element(:css, "div.angular-medium-editor")[last()].click
-    @driver.find_element(:css, "div.angular-medium-editor")[last()].clear
-	@driver.find_element(:css, "div.angular-medium-editor")[last()].send_keys "Description of the product (offer)"
 	sleep(2)
-	
-    
     @driver.find_element(:css, "button.test-activity-save").click
+	sleep(3)
+	@driver.find_element(:link, "Mission Page").click
+	sleep(3)
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").click
+    @driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").clear
+	@driver.find_element(:css, "div.angular-medium-editor[data-placeholder='Description of product']").send_keys "Description of the product"
+	sleep(2)
+	@driver.find_element(:css, "button.test-activity-save").click
 	sleep(3)
 	
    
@@ -111,9 +110,9 @@ describe "ContentCheckActivity" do
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
 	#@driver.find_element(:xpath, "//div[@id='sizzle-1424799674381']/div/table/tbody/tr[5]/td[3]").click
-	@driver.find_element(:xpath, "//td[contains(text(), '8') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '12') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__498']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__535']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
