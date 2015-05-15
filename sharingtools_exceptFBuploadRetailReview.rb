@@ -28,7 +28,7 @@ describe "Sharing Tools" do
 	#sleep(180)
 	login()
 	update_shippingaddress()
-	connect_FbTwIns()
+	#connect_FbTwIns()
 	sharing_activity()
 	
   end
@@ -156,7 +156,7 @@ describe "Sharing Tools" do
 	@driver.execute_script('$(\'input.js-pinterest-image[type="file"]\').attr("style", "");');
 	sleep(1)
 	@driver.find_element(:css, "input.js-pinterest-image[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
-	sleep(3)
+	sleep(5)
 	
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
@@ -164,7 +164,7 @@ describe "Sharing Tools" do
 	
 	#Toggle Instagram
 	@driver.find_element(:id, "switch_cb_instagram").click
-	sleep(2)
+	sleep(3)
 	#scroll
 	@driver.execute_script("scroll(0, 2000);")
 	sleep(4)
@@ -177,21 +177,21 @@ describe "Sharing Tools" do
 
 	#Toggle Brandconnect
 	@driver.find_element(:id, "switch_cb_brand_connect").click
-	sleep(2)
+	sleep(3)
 	#scroll
 	@driver.execute_script("scroll(0, 2400);")
 	sleep(4)
 	#@driver.find_element(:id, "s2id_topic-search").find_element(:css,"option[value='1']").click
 	@driver.find_element(:id, "s2id_topic-search").click
 	@driver.find_element(:id, "select2-results-3").click
-	
+	sleep(2)
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
 	
 	#Toggle retail review
 	@driver.find_element(:id, "switch_cb_retail_review").click
-	sleep(1)
+	sleep(3)
 	#scroll
 	@driver.execute_script("scroll(0, 2800);")
 	sleep(4)
@@ -227,9 +227,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__535']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -320,6 +320,7 @@ def connect_FbTwIns()
 	end
 	
 	def sharing_activity()
+	sleep(4)
 	@driver.find_element(:link, "Dashboard").click
 	sleep(2)
 	@driver.find_element(:link, "Sharing Tools Activity").click
@@ -448,7 +449,7 @@ def connect_FbTwIns()
 	#Instagram
 	buttons[10].find_element(:css, 'a').click
 	sleep(2)
-	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://youtu.be/_UR-l3QI2nE"
+	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
 	sleep(2)
 	@driver.find_element(:css, "label.control-checkbox[for='instagram_cb']").click
 	

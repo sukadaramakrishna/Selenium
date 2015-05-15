@@ -91,7 +91,7 @@ describe "CreateSurvey" do
 	sleep(1)
 	#Text Question
 	@driver.find_element(:css, "li.test-question-new.test-question-new-text").click
-	sleep(2)
+	sleep(3)
 	@driver.find_element(:css, "textarea.test-question-name").clear
 	@driver.find_element(:css, "textarea.test-question-name").send_keys "Text Question "
 	sleep(2)
@@ -197,7 +197,7 @@ describe "CreateSurvey" do
     @driver.find_element(:link, "Survey ABC").click
 	sleep(1)
 	
-	@driver.find_element(:css, "td.table-title").click
+	@driver.find_element(:css, "a.rowclick.test-hub-structure-item-link.ng-binding").click
 	sleep(2)
 	
 	#scroll
@@ -233,10 +233,10 @@ describe "CreateSurvey" do
 	sleep(1)
 	@driver.find_element(:css, "div.mlogic-step.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '8') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '14') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__535']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

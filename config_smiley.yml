@@ -1,26 +1,26 @@
 signup:
-  first_name: andrea		
-  last_name: lewis
-  address1: 263, 38th Street
+  first_name: john			
+  last_name: barnes
+  address1: 238, 38th Street
   address2: 8th Floor
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthi.testmember19@socialmedialink.com
+  email_facebook: tripthishetty20@gmail.com
   pass_facebook: general1234
-  email_twitter: tripthi.testmember20@socialmedialink.com
+  email_twitter: tripthi.shetty@socialmedialink.com
   pass_twitter: general1234
   email_instagram: tripthi.shetty
   pass_instagram: general1234
   base_url_facebook: https://facebook.com
   base_url_twitter: https://twitter.com
 admin:
-  base_url: https://admin-smiley.socialmedialink.com
-  email: tripthi.testmember2@socialmedialink.com
+  base_url: https://admin-staging.socialmedialink.com
+  email: tripthi.testmember8@socialmedialink.com
   pass: 12345678
 member:
-  base_url: https://tripsprint39.socialmedialink.com
-  email: tripthi.testmember3@socialmedialink.com
+  base_url: https://tripsprint39-staging.socialmedialink.com
+  email: john.barnes@yopmail.com
   pass: 12345678
   
   
