@@ -23,18 +23,19 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(180)
+    create_activity()
+	mission_logic()
+	sleep(180)
 	login()
 	update_shippingaddress()
-	#connect_FbTwIns()
+	connect_FbTwIns()
 	sharing_activity()
 	
   end
   
   def create_activity()
-    @driver.get(@base_url + "/admins/sign_in")
+  @driver.get(@config['admin']['base_url']	+ "/admins/sign_in")
+    #@driver.get(@base_url + "/admins/sign_in")
     @driver.find_element(:id, "admin_email").clear
     @driver.find_element(:id, "admin_email").send_keys @config['admin']['email']
     @driver.find_element(:id, "admin_password").clear
@@ -452,14 +453,17 @@ def connect_FbTwIns()
 	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
 	sleep(2)
 	@driver.find_element(:css, "label.control-checkbox[for='instagram_cb']").click
-	
+	sleep(2)
 	
 	#submit
 	@driver.find_element(:css, "button.btn-primary[type='submit']").click
 	@driver.find_element(:xpath, "//button[@type='submit']").click
 	@driver.find_element(:xpath, "(//button[@type='button'])[2]").click
 	@driver.save_screenshot "Screenshots/sharingtools_posts.png"
+	
   end
+  
+  
   
   def element_present?(how, what)
     @driver.find_element(how, what)

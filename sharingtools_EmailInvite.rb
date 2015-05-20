@@ -23,11 +23,11 @@ describe "SharingtoolsShareLink" do
   end
   
   it "test_sharingtools_share_link" do
-	create_2activity()
-	mission_logic()
-	sleep(180)
+	#create_2activity()
+	#mission_logic()
+	#sleep(180)
 	login()
-	update_shippingaddress()
+	#update_shippingaddress()
 	sharing_activity()
   end
   
@@ -48,7 +48,7 @@ describe "SharingtoolsShareLink" do
     @driver.find_element(:link, "New Mission Hub").click
 	sleep(1)
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
-    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Sharing A Link"
+    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Email Invite"
 	sleep(1)
 	@driver.find_element(:css, "button.btn-default").click
 	@driver.find_element(:css, "li.test-hub-new-activity").click
@@ -58,14 +58,14 @@ describe "SharingtoolsShareLink" do
     @driver.find_element(:css, "button.btn-edit").click
 	sleep(2)
 	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").clear
-	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing A Link"
+	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").send_keys "Email Invite"
 	
 	sleep(4)
     @driver.find_element(:css, "textarea.mission-page-title").clear
 	
 	sleep(2)
 
-    @driver.find_element(:css, "textarea.mission-page-title").send_keys "Sharing A Link"
+    @driver.find_element(:css, "textarea.mission-page-title").send_keys "Email Invite"
 	sleep(1)
 	@driver.find_element(:css, "input.mission-goal").clear
 	@driver.find_element(:css, "input.mission-goal").send_keys "10"
@@ -75,13 +75,14 @@ describe "SharingtoolsShareLink" do
 	@driver.execute_script("scroll(0, 250);")
 	sleep(4)
 	
-	#Toggle Share A Link
-	@driver.find_element(:id, "switch_cb_share_link").click
+	#Toggle Email Invite
+	@driver.find_element(:id, "switch_cb_email_group_invite").click
 	sleep(1)
-	#scroll
-	@driver.execute_script("scroll(0, 3000);")
-	sleep(4)
-	@driver.find_element(:css, "input.activity-share-url[ng-model='activity.share_link.seed_url']").send_keys "http://smiley.socialmedialink.com/promo/fp"
+	@driver.find_element(:css, "textarea#template_name").clear
+	@driver.find_element(:css, "textarea#template_name").send_keys "smiley-email-sharing"
+	sleep(1)
+	@driver.find_element(:css, "textarea#custom_landing_page_url").clear
+	@driver.find_element(:css, "textarea#custom_landing_page_url").send_keys "http://tripsprint39-staging.socialmedialink.com/promo/52b"
 	sleep(2)
 	
 	#save
@@ -90,7 +91,7 @@ describe "SharingtoolsShareLink" do
   end
   
   def mission_logic()
-    @driver.find_element(:link, "Sharing A Link").click
+    @driver.find_element(:link, "Email Invite").click
 	sleep(1)
     @driver.find_element(:link, "Mission Logic").click
 	sleep(1)
@@ -155,21 +156,25 @@ end
 	sleep(4)
 	@driver.find_element(:link, "Dashboard").click
 	sleep(2)
-    @driver.find_element(:link, "Sharing A Link").click
+    @driver.find_element(:link, "Email Invite").click
 	sleep(2)
 	#@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
-	abc = @driver.find_element(:css, "input.sharing-list-field").attribute('value')
-	#abc = Clipboard.data
-	puts "vbvb"
-	puts abc
-	@driver.get(abc)
-	sleep(4)
-	@driver.get(@base_url)
-	sleep(2)
-    @driver.find_element(:link, "Sharing A Link").click
-	sleep(2)
-	
+	buttons = @driver.find_elements(:css, "div.sharing-list-buttons")
+	buttons[0].find_element(:css, 'a').click
+	#@driver.find_elements(:link, "Add Emails").click
+	sleep(1)
+	@driver.find_elements(:css, "input.sharing-list-field.new-name").clear
+	@driver.find_elements(:css, "input.sharing-list-field.new-name").send_keys "Test Member"
+	sleep(1)
+	@driver.find_elements(:css, "input.sharing-list-field.new-email").clear
+	@driver.find_elements(:css, "input.sharing-list-field.new-email").send_keys "tripthi.testmember1@socialmedialink.com"
+	sleep(1)
+	@driver.find_elements(:css, "textarea.sharing-list-field").clear
+	@driver.find_elements(:css, "textarea.sharing-list-field").send_keys "Activity details with date time and location"
+	sleep(1)
+	@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
+	sleep(1)
 	#submit
 	@driver.find_element(:css, "button.btn-primary[type='submit']").click
 	#@driver.find_element(:xpath, "//button[@type='submit']").click
