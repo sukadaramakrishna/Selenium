@@ -228,9 +228,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '27') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -444,7 +444,7 @@ def connect_FbTwIns()
 	buttons[9].find_element(:css, 'a').click
 	sleep(2)
 	textareas[6].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
-	sleep(2)
+	sleep(5)
 	@driver.find_element(:css, "label.control-checkbox[for='pinterest_cb']").click
 	
 	#Instagram

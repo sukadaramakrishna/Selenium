@@ -27,7 +27,7 @@ describe "Sharing Tools" do
 	#mission_logic()
 	#sleep(180)
 	login()
-	update_shippingaddress()
+	#update_shippingaddress()
 	retailreview_uploadphoto()
   end
   
@@ -97,9 +97,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '27') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__535']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -157,7 +157,7 @@ def retailreview_uploadphoto()
 	sleep(2)
 	@driver.find_element(:link, "Retail Review Activity").click
 	sleep(2)
-	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
+	#@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
 	#@driver.find_element(:css, "input.btn-color[type='submit']").click
 	#sleep(2)

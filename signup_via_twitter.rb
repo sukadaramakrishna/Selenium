@@ -37,6 +37,7 @@ describe "TwitterSmlSignup" do
     @driver.find_element(:id, "password").send_keys @pass
 	sleep(1)
     @driver.find_element(:id, "allow").click
+	sleep(4)
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @email
     @driver.find_element(:id, "member_last_name").clear

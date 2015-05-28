@@ -164,9 +164,14 @@ end
 	buttons[0].find_element(:css, 'a').click
 	#@driver.find_elements(:link, "Add Emails").click
 	sleep(1)
-	@driver.find_elements(:css, "input.sharing-list-field.new-name").clear
-	@driver.find_elements(:css, "input.sharing-list-field.new-name").send_keys "Test Member"
+	email_array = @driver.find_elements(:css, "div.col-xs-5 col10")
+	email_array[0].find_element(:css, 'input.').clear
+	email_array[0].find_element(:css, 'a').send_keys "Test Member"
 	sleep(1)
+	
+	#@driver.find_elements(:css, "input.sharing-list-field.new-name").clear
+	#@driver.find_elements(:css, "input.sharing-list-field.new-name").send_keys "Test Member"
+	
 	@driver.find_elements(:css, "input.sharing-list-field.new-email").clear
 	@driver.find_elements(:css, "input.sharing-list-field.new-email").send_keys "tripthi.testmember1@socialmedialink.com"
 	sleep(1)

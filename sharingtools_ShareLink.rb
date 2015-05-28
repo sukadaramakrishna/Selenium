@@ -96,9 +96,9 @@ describe "SharingtoolsShareLink" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '27') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -157,7 +157,7 @@ end
 	sleep(2)
     @driver.find_element(:link, "Sharing A Link").click
 	sleep(2)
-	#@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
+	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
 	abc = @driver.find_element(:css, "input.sharing-list-field").attribute('value')
 	#abc = Clipboard.data

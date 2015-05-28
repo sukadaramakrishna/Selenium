@@ -104,7 +104,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-name").send_keys "Numbers Question "
 	sleep(2)
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(2)
 	#Yes or No
 	@driver.find_element(:css, "li.test-question-new.test-question-new-yes_or_no").click
 	sleep(2)
@@ -112,7 +112,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-name").send_keys "Yes or No Question "
 	sleep(2)
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(3)
 	#Ranking
 	@driver.find_element(:css, "li.test-question-new.test-question-new-ranking").click
 	sleep(2)
@@ -131,7 +131,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-answer-2").send_keys "Ranking 1"
 	sleep(1)	
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(3)
 	#Matrix Single
 	@driver.find_element(:css, "li.test-question-new.test-question-new-matrix_with_single_answer").click
 	sleep(2)
@@ -161,7 +161,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-matrix-col-2").send_keys "col 3"
 	sleep(2)
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(3)
 	#Matrix Multiple
 	@driver.find_element(:css, "li.test-question-new.test-question-new-matrix_with_multiple_answers").click
 	sleep(2)
@@ -192,7 +192,7 @@ describe "CreateSurvey" do
 	sleep(2)
 	
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(3)
 	
     @driver.find_element(:link, "Survey ABC").click
 	sleep(1)
@@ -233,10 +233,10 @@ describe "CreateSurvey" do
 	sleep(1)
 	@driver.find_element(:css, "div.mlogic-step.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '14') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '26') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
