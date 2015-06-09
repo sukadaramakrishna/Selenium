@@ -1,14 +1,14 @@
 signup:
-  first_name: rita					
-  last_name: oliver
-  address1: 623, 5th Avenue
+  first_name: will						
+  last_name: lochart
+  address1: 483 West, 37th street
   address2: #33
   city: New York City
   state: New York
-  zip: 10022
-  email_facebook: tripthi.shetty@socialmedialink.com
+  zip: 10018
+  email_facebook: tripthi.shetty@socialmedialink.co
   pass_facebook: general1234
-  email_twitter: tripthishetty20@gmail.com
+  email_twitter: tripthi.testmember20@socialmedialink.com
   pass_twitter: general1234
   email_instagram: tripthi.shetty
   pass_instagram: general1234
@@ -16,11 +16,10 @@ signup:
   base_url_twitter: https://twitter.com
 admin:
   base_url: https://admin-staging.socialmedialink.com
-  email: tripthi.testmember1@socialmedialink.com
+  email: tripthi.testmember2@socialmedialink.com
   pass: general1234
-member:
-  base_url: https://tripsprint41-staging.socialmedialink.com/
-  email: tripthi.testmember3@socialmedialink.com
+member: https://tripsprint41-staging.socialmedialink.com
+  email: will.lochart@yopmail.com
   pass: general1234
   
   
