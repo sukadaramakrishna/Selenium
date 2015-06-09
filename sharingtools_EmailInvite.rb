@@ -23,11 +23,11 @@ describe "SharingtoolsShareLink" do
   end
   
   it "test_sharingtools_share_link" do
-	#create_2activity()
-	#mission_logic()
-	#sleep(180)
+	create_2activity()
+	mission_logic()
+	sleep(180)
 	login()
-	#update_shippingaddress()
+	update_shippingaddress()
 	sharing_activity()
   end
   
@@ -46,10 +46,10 @@ describe "SharingtoolsShareLink" do
     @driver.find_element(:link, "Mission Hubs").click
 	sleep(1)
     @driver.find_element(:link, "New Mission Hub").click
-	sleep(1)
+	sleep(2)
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Email Invite"
-	sleep(1)
+	sleep(2)
 	@driver.find_element(:css, "button.btn-default").click
 	@driver.find_element(:css, "li.test-hub-new-activity").click
 	sleep(3)
@@ -97,9 +97,9 @@ describe "SharingtoolsShareLink" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '5') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1136']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__586']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -158,28 +158,28 @@ end
 	sleep(2)
     @driver.find_element(:link, "Email Invite").click
 	sleep(2)
-	#@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
+	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
 	buttons = @driver.find_elements(:css, "div.sharing-list-buttons")
 	buttons[0].find_element(:css, 'a').click
 	#@driver.find_elements(:link, "Add Emails").click
 	sleep(1)
-	email_array = @driver.find_elements(:css, "div.col-xs-5 col10")
-	email_array[0].find_element(:css, 'input.').clear
-	email_array[0].find_element(:css, 'a').send_keys "Test Member"
+	#email_array = @driver.find_elements(:css, "div.col-xs-5.col10")
+	@driver.find_element(:css, 'input.sharing-list-field.new-name').clear
+	@driver.find_element(:css, 'input.sharing-list-field.new-name').send_keys "Tripthi Shetty"
 	sleep(1)
-	
-	#@driver.find_elements(:css, "input.sharing-list-field.new-name").clear
-	#@driver.find_elements(:css, "input.sharing-list-field.new-name").send_keys "Test Member"
-	
-	@driver.find_elements(:css, "input.sharing-list-field.new-email").clear
-	@driver.find_elements(:css, "input.sharing-list-field.new-email").send_keys "tripthi.testmember1@socialmedialink.com"
+	@driver.find_element(:css, 'input.sharing-list-field.new-email').clear
+	@driver.find_element(:css, 'input.sharing-list-field.new-email').send_keys "tripthi.testmember1@socialmedialink.com"
 	sleep(1)
-	@driver.find_elements(:css, "textarea.sharing-list-field").clear
-	@driver.find_elements(:css, "textarea.sharing-list-field").send_keys "Activity details with date time and location"
+	@driver.find_element(:css, 'button.btn.btn-default').click
+	sleep(3)
+	@driver.find_element(:css, "textarea#shares__message").clear
+	@driver.find_element(:css, "textarea#shares__message").send_keys "Activity details with date time and location"
 	sleep(1)
 	@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
 	sleep(1)
+	@driver.find_element(:css, 'button.btn.btn-primary').click
+	sleep(3)
 	#submit
 	@driver.find_element(:css, "button.btn-primary[type='submit']").click
 	#@driver.find_element(:xpath, "//button[@type='submit']").click
