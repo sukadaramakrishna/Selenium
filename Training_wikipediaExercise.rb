@@ -24,6 +24,7 @@ describe "TrainingWikipediaExercise" do
     @driver.find_element(:id, "searchInput").send_keys "selenium software"
     @driver.find_element(:name, "go").click
     @driver.find_element(:css, "ul.mw-search-results li:nth-of-type(1) a").click
+	verify { assert(@driver.find_element(:css, "//upload.wikimedia.org/wikipedia/en/5/5c/Seleniumlogo.png").text.include?("Name"),"Page contains the text NAME")}
   end
   
   def element_present?(how, what)

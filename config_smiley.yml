@@ -17,8 +17,9 @@ signup:
 admin:
   base_url: https://admin-staging.socialmedialink.com
   email: tripthi.testmember2@socialmedialink.com
-  pass: general1234
-member: https://tripsprint41-staging.socialmedialink.com
+  pass: 12345678
+member: 
+  base_url: https://tripsprint41-staging.socialmedialink.com
   email: will.lochart@yopmail.com
   pass: general1234
   

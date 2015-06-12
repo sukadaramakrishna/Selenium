@@ -17,7 +17,7 @@ describe "Sharing Tools" do
     @verification_errors = []
   end
   
-  after(:each) do
+   after(:each) do
     #@driver.quit
     @verification_errors.should == []
   end
@@ -184,6 +184,7 @@ describe "Sharing Tools" do
 	sleep(4)
 	#@driver.find_element(:id, "s2id_topic-search").find_element(:css,"option[value='1']").click
 	@driver.find_element(:id, "s2id_topic-search").click
+	sleep(2)
 	@driver.find_element(:id, "select2-results-3").click
 	sleep(2)
 	#scroll
