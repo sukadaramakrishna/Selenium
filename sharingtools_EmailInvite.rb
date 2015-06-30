@@ -23,9 +23,9 @@ describe "SharingtoolsShareLink" do
   end
   
   it "test_sharingtools_share_link" do
-	create_2activity()
-	mission_logic()
-	sleep(180)
+	#create_2activity()
+	#mission_logic()
+	#sleep(180)
 	login()
 	update_shippingaddress()
 	sharing_activity()
@@ -97,9 +97,9 @@ describe "SharingtoolsShareLink" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '5') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '30') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__586']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -115,7 +115,8 @@ describe "SharingtoolsShareLink" do
  
   def login()
 	@driver.get(@config['member']['base_url']	+ "/home")
-    @driver.find_element(:link, "or your email address").click
+	sleep(3)
+    #@driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
     @driver.find_element(:id, "member_password").clear

@@ -1,6 +1,6 @@
 signup:
-  first_name: will						
-  last_name: lochart
+  first_name: kalinda							
+  last_name: sharma
   address1: 483 West, 37th street
   address2: #33
   city: New York City
@@ -20,7 +20,7 @@ admin:
   pass: 12345678
 member: 
   base_url: https://tripsprint41-staging.socialmedialink.com
-  email: will.lochart@yopmail.com
+  email: kalinda.sharma@yopmail.com
   pass: general1234
   
   
