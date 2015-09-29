@@ -23,7 +23,9 @@ describe "MemberSigninViaEmail" do
   it "test_member_signin_via_email" do
     @driver.get(@base_url + "/home")
 	sleep(2)
-    @driver.find_element(:link, "or your email address").click
+	@driver.manage.window.maximize
+	sleep(2)
+    #@driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
     @driver.find_element(:id, "member_password").clear

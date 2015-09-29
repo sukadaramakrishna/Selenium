@@ -22,8 +22,11 @@ describe "MemberSigninViaFacebook" do
   
   it "test_member_signin_via_facebook" do
     @driver.get(@base_url + "/home")
-    @driver.find_element(:link, "facebook").click
-    #@driver.find_element(:link, "facebook").click
+	sleep(2)
+	@driver.manage.window.maximize
+	sleep(2)
+	@driver.find_element(:xpath, "//a[@href='/members/auth/facebook']").click
+    sleep(2)
     @driver.find_element(:id, "email").clear
     @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']
 	@driver.find_element(:id, "pass").clear
