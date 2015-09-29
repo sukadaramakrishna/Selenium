@@ -22,8 +22,7 @@ describe "ConnectToSocialmedia" do
   
   it "test_connect_to_socialmedia" do
     @driver.get(@base_url + "/home")
-    @driver.find_element(:link, "or your email address").click
-	sleep(1)
+	sleep(2)
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
 	sleep(1)
@@ -31,8 +30,13 @@ describe "ConnectToSocialmedia" do
     @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
     @driver.find_element(:name, "commit").click
 	sleep(1)
-    @driver.find_element(:css, "span.header-user-name").click
-
+	@driver.manage.window.maximize
+	sleep(2)
+	@driver.find_element(:css, "span.header-user-name").click
+    #scroll
+	sleep(1)
+	@driver.execute_script("scroll(0, 250);")
+	sleep(4)
 	#connect facebook
     @driver.find_element(:link, "Connect").click
 	sleep(1)

@@ -23,7 +23,7 @@ describe "Shippingaddress" do
   it "test_shippingaddress" do
     @driver.get(@base_url + "/home")
 	sleep(2)
-    @driver.find_element(:link, "or your email address").click
+    #@driver.find_element(:link, "or your email address").click
 	sleep(1)
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
@@ -32,10 +32,12 @@ describe "Shippingaddress" do
 	sleep(1)
     @driver.find_element(:name, "commit").click
 	sleep(1)
+	@driver.manage.window.maximize
+	sleep(2)
     @driver.find_element(:css, "span.header-user-name").click
 	sleep(1)
     @driver.find_element(:link, "Shipping Address").click
-	sleep(1)
+	sleep(4)
     @driver.find_element(:id, "member_address_2").clear
     @driver.find_element(:id, "member_address_2").send_keys @config['signup']['address1']
 	sleep(1)
@@ -52,7 +54,8 @@ describe "Shippingaddress" do
 	sleep(1)
 	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
 	sleep(1)
-    @driver.find_element(:name, "commit").click
+    @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
+	sleep(2)
 	@driver.save_screenshot "Screenshots/shippingaddress.png"
   end
   
