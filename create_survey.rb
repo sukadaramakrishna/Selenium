@@ -113,25 +113,7 @@ describe "CreateSurvey" do
 	sleep(2)
 	@driver.find_element(:css, "button.test-question-create").click
 	sleep(3)
-	#Ranking
-	@driver.find_element(:css, "li.test-question-new.test-question-new-ranking").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Ranking Question "
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-answer-0").clear
-	@driver.find_element(:css, "textarea.test-question-answer-0").send_keys "Ranking 3"
-	@driver.action.send_keys(:enter).perform
-	sleep(1)
-	@driver.find_element(:css, "textarea.test-question-answer-1").clear
-	@driver.find_element(:css, "textarea.test-question-answer-1").send_keys "Ranking 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(1)
-	@driver.find_element(:css, "textarea.test-question-answer-2").clear
-	@driver.find_element(:css, "textarea.test-question-answer-2").send_keys "Ranking 1"
-	sleep(1)	
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(3)
+	
 	#Matrix Single
 	@driver.find_element(:css, "li.test-question-new.test-question-new-matrix_with_single_answer").click
 	sleep(2)
@@ -211,18 +193,18 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "input.reward-points-field").clear
 	@driver.find_element(:css, "input.reward-points-field").send_keys "10"
 	sleep(2)
-	@driver.find_element(:xpath, "(//button[@type='button'])[44]").click
+	@driver.find_element(:xpath, "//button[@ng-click='src.update()']").click
 	sleep(2)
    @driver.find_element(:css, "strong.q-list-type-badge").click
 	sleep(2)
 	puts "abc"
 	@driver.execute_script('$(\'input.js-badge-image-field[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
+	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
 	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
 	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
-	@driver.find_element(:xpath, "(//button[@type='button'])[46]").click
+	@driver.find_element(:xpath, "//button[@ng-click='save()']").click
 	sleep(2)
 	
 	@driver.find_element(:link, "Survey ABC").click
