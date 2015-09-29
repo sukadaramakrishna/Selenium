@@ -22,7 +22,10 @@ describe "MemberSigninViaTwitter" do
   
   it "test_member_signin_via_twitter" do
     @driver.get(@base_url + "/home")
-    @driver.find_element(:link, "twitter").click
+	sleep(2)
+	@driver.manage.window.maximize
+	sleep(2)
+    @driver.find_element(:xpath, "//a[@href='/members/auth/twitter']").click
 	sleep(2)
     #@driver.find_element(:link, "twitter").click
     @driver.find_element(:id, "username_or_email").clear
