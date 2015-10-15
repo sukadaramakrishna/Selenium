@@ -1,12 +1,12 @@
 signup:
-  first_name: kalinda							
-  last_name: sharma
+  first_name: steven											
+  last_name: fraser
   address1: 483 West, 37th street
   address2: #33
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthi.shetty@socialmedialink.co
+  email_facebook: tripthi.testmember1@socialmedialink.com
   pass_facebook: general1234
   email_twitter: tripthi.testmember20@socialmedialink.com
   pass_twitter: general1234
@@ -16,11 +16,11 @@ signup:
   base_url_twitter: https://twitter.com
 admin:
   base_url: https://admin-staging.socialmedialink.com
-  email: tripthi.testmember2@socialmedialink.com
+  email: tripthi.testmember13@socialmedialink.com
   pass: 12345678
 member: 
-  base_url: https://tripsprint41-staging.socialmedialink.com
-  email: tripthi.testmember8@socialmedialink.com
+  base_url: https://tripsprint51-staging.socialmedialink.com
+  email: steven.fraser@yopmail.com
   pass: 12345678
   
   

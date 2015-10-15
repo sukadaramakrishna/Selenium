@@ -43,6 +43,9 @@ describe "FacebookSMLSignup" do
 	@driver.find_element(:id, "member_zip_code").clear
     @driver.find_element(:id, "member_zip_code").send_keys @zip
 	@driver.find_element(:name, "commit").click
+	sleep(2)
+	@driver.find_element(:css, "a.btn.btn-color.btn-lg").click
+	sleep(2)
 
   end
   

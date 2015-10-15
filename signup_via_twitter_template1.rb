@@ -49,6 +49,9 @@ describe "TwitterSmlSignup" do
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1987")
     @driver.find_element(:css, "label.control-radio").click
     @driver.find_element(:name, "commit").click
+	sleep(2)
+	@driver.find_element(:css, "a.btn.btn-color.btn-lg").click
+	sleep(2)
   end
   
   def element_present?(how, what)

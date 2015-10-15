@@ -88,7 +88,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-answer-2").send_keys "Answer 3"
 	sleep(1)
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(2)
 	#Text Question
 	@driver.find_element(:css, "li.test-question-new.test-question-new-text").click
 	sleep(3)
@@ -96,7 +96,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "textarea.test-question-name").send_keys "Text Question "
 	sleep(2)
 	@driver.find_element(:css, "button.test-question-create").click
-	sleep(1)
+	sleep(2)
 	#Numbers Question
 	@driver.find_element(:css, "li.test-question-new.test-question-new-numbers").click
 	sleep(2)
@@ -215,10 +215,10 @@ describe "CreateSurvey" do
 	sleep(1)
 	@driver.find_element(:css, "div.mlogic-step.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__596']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1567']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -228,9 +228,9 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "label.switcher.ng-scope").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-save").click
-	sleep(140)
+	sleep(2)
   end
-  
+=begin
   def check_survey() 
   #check if survey exists on user side
     @driver.get(@config['member']['base_url']	+ "/home")
@@ -306,7 +306,7 @@ describe "CreateSurvey" do
 	sleep(2)
 end
 	
-	
+=end
   
   def element_present?(how, what)
     @driver.find_element(how, what)

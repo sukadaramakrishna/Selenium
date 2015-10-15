@@ -69,12 +69,16 @@ describe "EmailSignup" do
     @driver.find_element(:id, "member_zip_code").clear
     @driver.find_element(:id, "member_zip_code").send_keys @zip
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_month")).select_by(:text, "February")
+	sleep(1)
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_day")).select_by(:text, "7")
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1978")
+	sleep(1)
+    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1998")
+	sleep(3)
     @driver.find_element(:css, "label.control-radio").click
     @driver.find_element(:name, "commit").click
 	@driver.save_screenshot "Screenshots/tutorial.png"
-	
+	@driver.find_element(:css, "a.btn.btn-color.btn-lg").click
+	sleep(2)
   end
   
   def element_present?(how, what)

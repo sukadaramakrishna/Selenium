@@ -3,8 +3,8 @@ require "selenium-webdriver"
 require "rspec"
 require "yaml"
 include RSpec::Expectations
-require "win32/clipboard"
-include Win32 
+#require "win32/clipboard"
+#include Win32 
 
 describe "Sharing Tools" do
 
@@ -23,9 +23,9 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(240)
+    create_activity()
+	mission_logic()
+	sleep(240)
 	login()
 	update_shippingaddress()
 	connect_FbTwIns()
@@ -47,9 +47,9 @@ describe "Sharing Tools" do
     @driver.get(@base_url + "/mission_hubs#?filter=current")
 	sleep(1)
     @driver.find_element(:link, "Mission Hubs").click
-	sleep(2)
+	sleep(4)
     @driver.find_element(:link, "New Mission Hub").click
-	sleep(2)
+	sleep(4)
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Sharing Tools"
 	sleep(2)
@@ -59,7 +59,7 @@ describe "Sharing Tools" do
     @driver.find_element(:link, "New Activity").click
 	sleep(7)
     @driver.find_element(:css, "button.btn-edit").click
-	sleep(2)
+	sleep(3)
 	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").clear
 	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing Tools Activity"
 	
@@ -156,7 +156,7 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[ng-model='activity.pinterest.suggested_phrase']").send_keys "Click this pin to visit Smiley360! You'll love being a member :)"
 	@driver.execute_script('$(\'input.js-pinterest-image[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, "input.js-pinterest-image[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
+	@driver.find_element(:css, "input.js-pinterest-image[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\brand.jpe")
 	sleep(5)
 	
 	#scroll
@@ -185,7 +185,7 @@ describe "Sharing Tools" do
 	#@driver.find_element(:id, "s2id_topic-search").find_element(:css,"option[value='1']").click
 	@driver.find_element(:id, "s2id_topic-search").click
 	sleep(2)
-	@driver.find_element(:id, "select2-results-3").click
+	@driver.find_element(:css, "select2-choice").click
 	sleep(2)
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
