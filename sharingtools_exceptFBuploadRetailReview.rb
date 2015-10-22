@@ -180,12 +180,14 @@ describe "Sharing Tools" do
 	@driver.find_element(:id, "switch_cb_brand_connect").click
 	sleep(3)
 	#scroll
-	@driver.execute_script("scroll(0, 2400);")
+	@driver.execute_script("scroll(0, 2600);")
 	sleep(4)
-	#@driver.find_element(:id, "s2id_topic-search").find_element(:css,"option[value='1']").click
-	@driver.find_element(:id, "s2id_topic-search").click
+	#@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").find_element(:css,"option[value='126']").click
+	#@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").click
 	sleep(2)
-	@driver.find_element(:css, "select2-choice").click
+	@driver.find_element(:xpath, "//input[@id='s2id_autogen17_search']").click
+	sleep(2)
+	@driver.find_element(:id, "select2-result-3']").click
 	sleep(2)
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
@@ -220,7 +222,7 @@ describe "Sharing Tools" do
 	
 	#save
     @driver.find_element(:css, "button.btn.btn-sidebar.btn-primary").click
-	sleep(3)
+	sleep(6)
 	end
 	def mission_logic()
     @driver.find_element(:link, "Sharing Tools").click
