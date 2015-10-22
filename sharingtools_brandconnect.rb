@@ -23,9 +23,9 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(240)
+    create_activity()
+	mission_logic()
+	sleep(240)
 	login()
 	update_shippingaddress()
 	connect_FbTwIns()
@@ -77,7 +77,7 @@ describe "Sharing Tools" do
 	sleep(1)
 	@driver.execute_script("scroll(0, 250);")
 	sleep(4)
-	
+=begin
 	#Toggle Facebook
     @driver.find_element(:id, "switch_cb_facebook").click
 	sleep(4)
@@ -175,24 +175,26 @@ describe "Sharing Tools" do
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
-=begin
+	
+=end
+
 	#Toggle Brandconnect
 	@driver.find_element(:id, "switch_cb_brand_connect").click
 	sleep(3)
 	#scroll
-	@driver.execute_script("scroll(0, 2600);")
-	sleep(4)
+	@driver.execute_script("scroll(0, 500);")
+	#sleep(4)
 	#@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").find_element(:css,"option[value='126']").click
 	@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").click
 	sleep(2)
-	#@driver.find_element(:xpath, "//input[@id='topic-search']").click
+	@driver.find_element(:xpath, "//input[@id='s2id_autogen3_search']").click
 	sleep(2)
-	@driver.find_element(:css, "ul.select2-result-3").click
+	#@driver.find_element(:css, "ul.select2-result-3").click
 	sleep(2)
 	#scroll
-	@driver.execute_script("scroll(0, 1000);")
+	#@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
-=end	
+=begin	
 	#Toggle retail review
 	@driver.find_element(:id, "switch_cb_retail_review").click
 	sleep(3)
@@ -219,7 +221,7 @@ describe "Sharing Tools" do
 	@driver.execute_script("scroll(0, 1200);")
 	sleep(4)
 	
-	
+=end
 	#save
     @driver.find_element(:css, "button.btn.btn-sidebar.btn-primary").click
 	sleep(6)
@@ -231,9 +233,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '22') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '16') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__586']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1210']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -249,7 +251,7 @@ describe "Sharing Tools" do
   
   def login()
 	@driver.get(@config['member']['base_url']	+ "/home")
-    #@driver.find_element(:link, "or your email address").click
+    @driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
     @driver.find_element(:id, "member_password").clear
@@ -408,7 +410,7 @@ def connect_FbTwIns()
 	
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, 'input[type="file"]').send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	@driver.find_element(:css, 'input[type="file"]').send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
 	sleep(3)
 	textareas[3].find_element(:css,  'textarea').send_keys " member text"
 	sleep(1)
@@ -436,22 +438,22 @@ def connect_FbTwIns()
 	@driver.find_element(:css, "textarea[placeholder='Paste the link to your video here']").send_keys "https://youtu.be/_UR-l3QI2nE"
 	sleep(2)
 	@driver.find_element(:css, "label.control-checkbox[for='youtube_cb']").click
-=begin	
+	
 	#Brand connect
 	buttons[7].find_element(:css, 'a').click
 	sleep(2)
 	textareas[5].find_element(:css,  'textarea').send_keys "Brand connect comment Brand connect comment Brand connect comment Brand connect comment"
 	sleep(2)
-=end	
+	
 	#Pinterest
-	buttons[8].find_element(:css, 'a').click
+	buttons[9].find_element(:css, 'a').click
 	sleep(2)
-	textareas[5].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
+	textareas[6].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
 	sleep(5)
 	@driver.find_element(:css, "label.control-checkbox[for='pinterest_cb']").click
 	
 	#Instagram
-	buttons[9].find_element(:css, 'a').click
+	buttons[10].find_element(:css, 'a').click
 	sleep(2)
 	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
 	sleep(2)
