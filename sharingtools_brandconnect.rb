@@ -45,14 +45,14 @@ describe "Sharing Tools" do
 	sleep(4)
 	@driver.manage.window.maximize
     @driver.get(@base_url + "/mission_hubs#?filter=current")
-	sleep(1)
+	sleep(2)
     @driver.find_element(:link, "Mission Hubs").click
 	sleep(4)
     @driver.find_element(:link, "New Mission Hub").click
-	sleep(4)
+	sleep(5)
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Sharing Tools"
-	sleep(2)
+	sleep(4)
 	@driver.find_element(:css, "button.btn-default").click
 	@driver.find_element(:css, "li.test-hub-new-activity").click
 	sleep(3)
@@ -60,8 +60,8 @@ describe "Sharing Tools" do
 	sleep(7)
     @driver.find_element(:css, "button.btn-edit").click
 	sleep(3)
-	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").clear
-	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing Tools Activity"
+	@driver.find_element(:css, "input.q-field.ng-pristine[placeholder='Type a activity name']").clear
+	@driver.find_element(:css, "input.q-field.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing Tools Activity"
 	
 	sleep(4)
     @driver.find_element(:css, "textarea.mission-page-title").clear
@@ -185,11 +185,19 @@ describe "Sharing Tools" do
 	@driver.execute_script("scroll(0, 500);")
 	#sleep(4)
 	#@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").find_element(:css,"option[value='126']").click
+	#
 	@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").click
+	@driver.find_element(:xpath, "//a[@class='select2-choice']").click
+	sleep(1)
+	#@driver.find_element(:xpath, "//input[@id='s2id_autogen3_search'][@aria-activedescendant='select2-result-label-5']").click
+	sleep(1)
+	#@driver.find_element(:xpath, "//li[@class='select2-highlighted']").click
+	#sleep(5)
+	#@driver.find_element(:xpath, "//div[@id='s2id_discussion-select']").click
 	sleep(2)
-	@driver.find_element(:xpath, "//input[@id='s2id_autogen3_search']").click
-	sleep(2)
-	#@driver.find_element(:css, "ul.select2-result-3").click
+	#@driver.find_element(:xpath, "//input[@id='s2id_autogen3_search']").click
+	drop = @driver.find_element(:id, "select2-results-3")
+	drop.find_element(:css,"li.select2-results-dept-0.select2-result.select2-result-selectable.select2-highlighted").click
 	sleep(2)
 	#scroll
 	#@driver.execute_script("scroll(0, 1000);")

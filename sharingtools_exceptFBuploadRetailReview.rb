@@ -23,9 +23,9 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(240)
+    create_activity()
+	mission_logic()
+	sleep(240)
 	login()
 	update_shippingaddress()
 	connect_FbTwIns()
@@ -54,14 +54,15 @@ describe "Sharing Tools" do
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Sharing Tools"
 	sleep(2)
 	@driver.find_element(:css, "button.btn-default").click
+	sleep(2)
 	@driver.find_element(:css, "li.test-hub-new-activity").click
 	sleep(3)
     @driver.find_element(:link, "New Activity").click
 	sleep(7)
     @driver.find_element(:css, "button.btn-edit").click
 	sleep(3)
-	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").clear
-	@driver.find_element(:css, "input.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing Tools Activity"
+	@driver.find_element(:css, "input.q-field.ng-pristine[placeholder='Type a activity name']").clear
+	@driver.find_element(:css, "input.q-field.ng-pristine[placeholder='Type a activity name']").send_keys "Sharing Tools Activity"
 	
 	sleep(4)
     @driver.find_element(:css, "textarea.mission-page-title").clear
