@@ -32,20 +32,20 @@ describe "EmailSignup" do
     puts 'selenium test running'
 	
     @driver.get(@base_url + "/home")
-    @driver.find_element(:css, "a.landing-sidebar-switch").click
+    @driver.find_element(:css, "button.login-switch-button").click
 	sleep(2)
-	@driver.find_element(:xpath, "//div[@id='signup']/form[1]/input[1]").click
-    @driver.find_element(:xpath, "//div[@id='signup']/form[1]/input[1]").clear
-    @driver.find_element(:xpath, "//div[@id='signup']/form[1]/input[1]").send_keys @email
+	@driver.find_element(:xpath, "(//input[@id='member_email'])[2]").click
+    @driver.find_element(:xpath, "(//input[@id='member_email'])[2]").clear
+    @driver.find_element(:xpath, "(//input[@id='member_email'])[2]").send_keys @email
 	sleep(2)
-    @driver.find_element(:xpath, "//div[@class='input-group']/input").clear
-    @driver.find_element(:xpath, "//div[@class='input-group']/input").send_keys @pass
+    @driver.find_element(:xpath, "(//input[@id='member_password'])[2]").clear
+    @driver.find_element(:xpath, "(//input[@id='member_password'])[2]").send_keys @pass
     sleep(2)
-	
-	@driver.find_element(:css, "label.control-checkbox").click
+	#@driver.find_element(:css, "label.control-checkbox").click
+	sleep(1)
+    @driver.find_element(:css, "span").click
+    @driver.find_element(:xpath, "(//input[@name='commit'])[2]").click
 	sleep(2)
-    @driver.find_element(:css, "input.btn[value='Sign up']").click
-    sleep(2)
 	@driver.get("http://yopmail.com");
 	sleep(4)
 	@driver.find_element(:id, "login").click

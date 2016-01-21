@@ -32,7 +32,7 @@ describe "EmailSignup" do
     puts 'selenium test running'
 	
     @driver.get(@base_url + "/home")
-    @driver.find_element(:link, "or Join with your email address").click
+    @driver.find_element(:css, "button.login-switch-button").click
 	sleep(1)
 	@driver.find_element(:css, "label.control-checkbox").click
 	sleep(1)
