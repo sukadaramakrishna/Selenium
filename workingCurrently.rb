@@ -23,12 +23,12 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    create_activity()
-	mission_logic()
-	sleep(240)
+    #create_activity()
+	#mission_logic()
+	#sleep(240)
 	login()
 	update_shippingaddress()
-	connect_FbTwIns()
+	#connect_FbTwIns()
 	sharing_activity()
 	
   end
@@ -87,6 +87,16 @@ describe "Sharing Tools" do
 	sleep(1)
 	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook.suggested_phrase']").clear
 	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook.suggested_phrase']").send_keys "Suggested Phrase"
+	sleep(1)
+	
+	#Toggle Facebook Page
+	@driver.find_element(:id, "switch_cb_facebook_page").click
+	sleep(4)
+	@driver.find_element(:css, "input.activity-share-url[ng-model='activity.facebook_page.seed_url']").clear
+	@driver.find_element(:css, "input.activity-share-url[ng-model='activity.facebook_page.seed_url']").send_keys "http://socialmedialink.com/"
+	sleep(1)
+	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook_page.suggested_phrase']").clear
+	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook_page.suggested_phrase']").send_keys "Facebook Page Suggested Phrase"
 	sleep(1)
 	
 	#Toggle Twitter
@@ -283,7 +293,9 @@ describe "Sharing Tools" do
 	sleep(1)
 	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
 	sleep(1)
-    @driver.find_element(:name, "commit").click
+     @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
+	sleep(2)
+	
 end
 def connect_FbTwIns()
 @driver.find_element(:css, "span.header-user-name").click
@@ -371,14 +383,28 @@ def connect_FbTwIns()
 	@driver.execute_script("scroll(0, 250);")
 	sleep(4)
 	
-	#Twitter post
+	#Facebook page post
 	buttons[1].find_element(:css, 'a').click
+	#@driver.execute_script("scroll(0, 250);")
+	#sleep(1)
+	@driver.find_element(:xpath, "(//button[@sml-text-target='.js-facebook-phrase-target'])[1]").click
+	sleep(1)
+	textareas = @driver.find_elements(:css, "div.relative")
+	textareas[1].find_element(:css, 'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(2)
-    textareas[1].find_element(:css,  'textarea').send_keys " member text"
+	@driver.find_element(:css, "label.control-checkbox[for='facebook_page_fb_cb']").click
+	sleep(1)
+	@driver.execute_script("scroll(0, 250);")
+	sleep(4)
+	
+	#Twitter post
+	buttons[2].find_element(:css, 'a').click
+	sleep(2)
+    textareas[2].find_element(:css,  'textarea').send_keys " member text"
 	sleep(1)
 	
 	#Blog Review
-	buttons[2].find_element(:css, 'a').click
+	buttons[3].find_element(:css, 'a').click
 	sleep(2)
 	#textareas1 = @driver.find_elements(:css, "div.sharing-list-form")
 	@driver.find_element(:css, "textarea[placeholder='Paste the link to your blog post here']").send_keys "http://blog.smiley360.com/"
@@ -387,9 +413,9 @@ def connect_FbTwIns()
 	
 	
 	#Face2face post
-	buttons[3].find_element(:css, 'a').click
+	buttons[4].find_element(:css, 'a').click
 	sleep(2)
-	textareas[2].find_element(:css, 'textarea').send_keys "face2face member text face2face member text face2face member text face2face member text face2face member text"
+	textareas[3].find_element(:css, 'textarea').send_keys "face2face member text face2face member text face2face member text face2face member text face2face member text"
 	sleep(2)
 	
 	
@@ -404,14 +430,14 @@ def connect_FbTwIns()
 =end
 
 	#upload photo to twitter post
-	buttons[4].find_element(:css, 'a').click
+	buttons[5].find_element(:css, 'a').click
 	sleep(2)
 	
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
 	@driver.find_element(:css, 'input[type="file"]').send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
-	textareas[3].find_element(:css,  'textarea').send_keys " member text"
+	textareas[4].find_element(:css,  'textarea').send_keys " member text"
 	sleep(1)
 =begin
 	#Upload photo to facebook post
@@ -432,7 +458,7 @@ def connect_FbTwIns()
 	
 	
 	#Youtube
-	buttons[6].find_element(:css, 'a').click
+	buttons[7].find_element(:css, 'a').click
 	sleep(2)
 	@driver.find_element(:css, "textarea[placeholder='Paste the link to your video here']").send_keys "https://youtu.be/_UR-l3QI2nE"
 	sleep(2)
@@ -445,14 +471,14 @@ def connect_FbTwIns()
 	sleep(2)
 =end	
 	#Pinterest
-	buttons[8].find_element(:css, 'a').click
+	buttons[9].find_element(:css, 'a').click
 	sleep(2)
-	textareas[5].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
+	textareas[6].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
 	sleep(5)
 	@driver.find_element(:css, "label.control-checkbox[for='pinterest_cb']").click
 	
 	#Instagram
-	buttons[9].find_element(:css, 'a').click
+	buttons[10].find_element(:css, 'a').click
 	sleep(2)
 	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
 	sleep(2)

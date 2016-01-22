@@ -11,7 +11,7 @@ signup:
   email_twitter: tripthi.testmember20@socialmedialink.com
   pass_twitter: general1234
   email_instagram: tripthi.shetty
-  pass_instagram: general1234
+  pass_instagram: abcd1234
   base_url_facebook: https://facebook.com
   base_url_twitter: https://twitter.com
 admin:
@@ -20,7 +20,7 @@ admin:
   pass: 12345678
 member: 
   base_url: https://tripsprint57-staging.socialmedialink.com
-  email: mary.crawley@yopmail.com
+  email: karen.baker@yopmail.com
   pass: 12345678
   
   
