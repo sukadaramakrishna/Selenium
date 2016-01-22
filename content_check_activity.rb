@@ -39,8 +39,8 @@ describe "ContentCheckActivity" do
     @driver.find_element(:link, "Mission Hubs").click
 	sleep(1)
     @driver.find_element(:link, "New Mission Hub").click
-    @driver.find_element(:css, "input.ng-pristine").clear
-    @driver.find_element(:css, "input.ng-pristine").send_keys "Activity Content Check"
+    @driver.find_element(:xpath, "//div[@ng-model='new_mission_hub.name']/input[1]").clear
+    @driver.find_element(:xpath, "//div[@ng-model='new_mission_hub.name']/input[1]").send_keys "Activity Content Check"
 	sleep(1)
 	@driver.find_element(:css, "button.btn-default").click
 	sleep(2)
@@ -110,9 +110,9 @@ describe "ContentCheckActivity" do
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
 	#@driver.find_element(:xpath, "//div[@id='sizzle-1424799674381']/div/table/tbody/tr[5]/td[3]").click
-	@driver.find_element(:xpath, "//td[contains(text(), '5') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '21') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__586']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1790']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

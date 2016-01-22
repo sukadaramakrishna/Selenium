@@ -38,7 +38,7 @@ describe "FacebookSMLSignup" do
     sleep(1)
     @driver.find_element(:id, "u_0_2").click
 	sleep(1)
-	@driver.find_element(:css, "button[name='__CONFIRM__']").click
+	#@driver.find_element(:css, "button[name='__CONFIRM__']").click
 	sleep(3)
 	@driver.find_element(:id, "member_zip_code").clear
     @driver.find_element(:id, "member_zip_code").send_keys @zip

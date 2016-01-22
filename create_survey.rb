@@ -215,10 +215,10 @@ describe "CreateSurvey" do
 	sleep(1)
 	@driver.find_element(:css, "div.mlogic-step.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '15') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '21') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1567']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1790']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
