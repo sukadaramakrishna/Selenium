@@ -232,9 +232,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '22') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '25') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1790']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1207']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -283,7 +283,8 @@ describe "Sharing Tools" do
 	sleep(1)
 	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
 	sleep(1)
-    @driver.find_element(:name, "commit").click
+    @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
+	sleep(2)
 end
 def connect_FbTwIns()
 @driver.find_element(:css, "span.header-user-name").click

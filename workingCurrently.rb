@@ -293,7 +293,7 @@ describe "Sharing Tools" do
 	sleep(1)
 	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
 	sleep(1)
-     @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
+    @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
 	sleep(2)
 	
 end

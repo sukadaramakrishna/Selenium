@@ -110,9 +110,9 @@ describe "ContentCheckActivity" do
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
 	#@driver.find_element(:xpath, "//div[@id='sizzle-1424799674381']/div/table/tbody/tr[5]/td[3]").click
-	@driver.find_element(:xpath, "//td[contains(text(), '21') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '25') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1790']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1207']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -124,7 +124,7 @@ describe "ContentCheckActivity" do
 	
 	def activity_content_check()
 	@driver.get(@config['member']['base_url']	+ "/home")
-    @driver.find_element(:link, "or your email address").click
+    #@driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
     @driver.find_element(:id, "member_password").clear
