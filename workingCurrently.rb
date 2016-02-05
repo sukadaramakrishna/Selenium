@@ -28,7 +28,7 @@ describe "Sharing Tools" do
 	#sleep(240)
 	login()
 	update_shippingaddress()
-	#connect_FbTwIns()
+	connect_FbTwIns()
 	sharing_activity()
 	
   end
