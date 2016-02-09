@@ -12,6 +12,7 @@ describe "Sharing Tools" do
 	@config = YAML.load_file("config_smiley.yml")
     @driver = Selenium::WebDriver.for :firefox
     @base_url = @config['admin']['base_url']
+	@base_member_url = @config['member']['base_url']
     @accept_next_alert = true
     @driver.manage.timeouts.implicit_wait = 30
     @verification_errors = []
@@ -25,11 +26,13 @@ describe "Sharing Tools" do
   it "test_sharing_tools" do
     create_activity()
 	mission_logic()
-	#sleep(240)
-	#login()
-	#update_shippingaddress()
-	#connect_FbTwIns()
-	#sharing_activity()
+	sleep(240)
+	login()
+	update_shippingaddress()
+	connect_FbTwIns()
+	accept_activity()
+	sharing_activity()
+	sharing_activity_ShareALink()
 	
   end
   
@@ -252,7 +255,7 @@ describe "Sharing Tools" do
 	#scroll
 	@driver.execute_script("scroll(0, 3000);")
 	sleep(4)
-	@driver.find_element(:css, "input.activity-share-url[ng-model='activity.share_link.seed_url']").send_keys "http://smiley.socialmedialink.com/promo/fp"
+	@driver.find_element(:css, "input.activity-share-url[ng-model='activity.share_link.seed_url']").send_keys "http://www.google.com/"
 	sleep(2)
 	
 	#scroll
@@ -365,7 +368,7 @@ def connect_FbTwIns()
 	@driver.save_screenshot "Screenshots/connect_to_socialmedia.png"
 	end
 	
-	def sharing_activity()
+	def accept_activity()
 	sleep(4)
 	@driver.find_element(:link, "Dashboard").click
 	sleep(2)
@@ -377,7 +380,7 @@ def connect_FbTwIns()
 	#sleep(2)
 	#@driver.find_element(:css, "input.btn-color[type='submit']").click
    
-
+	end
 =begin 
 	#use the below code when the member is not connected to Facebook
 	@driver.find_element(:link, "connect").click
@@ -395,7 +398,7 @@ def connect_FbTwIns()
 	@driver.find_element(:id, "allow").click
 	sleep(2)
 =end
-	
+	def sharing_activity()
 	buttons = @driver.find_elements(:css, "div.sharing-list-buttons")
 	
 	#Facebook post
@@ -490,12 +493,13 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	uploads = @driver.find_elements(:xpath,'//input[@type="file"]')
-	uploads[3].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[2].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
-	textareas[6].find_element(:css,  'textarea').send_keys " member text member text member text member text member text member text"
+	@driver.find_element(:css, "button.btn-color[sml-fill-text='Upload photo to facebook page suggested Phrase']").click
+	sleep(2)
+	textareas[6].find_element(:css,'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(1)
-	
+	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_fb_page_cb']").click
 	
 	#Youtube
 	buttons[8].find_element(:css, 'a').click
@@ -510,24 +514,28 @@ def connect_FbTwIns()
 	sleep(2)
 	textareas[7].find_element(:css,  'textarea').send_keys "Brand connect comment Brand connect comment Brand connect comment Brand connect comment"
 	sleep(2)
-
+	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
+	sleep(1)
+	uploads[3].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	sleep(3)
+	
 	#Retail Review Sharing 
 	@driver.find_element(:css, 'a[ng-hide="services.retail_review.active"]').click
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	uploads[2].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[4].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
 	
 	#Pinterest
-	buttons[10].find_element(:css, 'a').click
+	buttons[11].find_element(:css, 'a').click
 	sleep(2)
 	textareas[8].find_element(:css,  'textarea').send_keys "https://www.pinterest.com/pin/457889487091108197/"
 	sleep(5)
 	@driver.find_element(:css, "label.control-checkbox[for='pinterest_cb']").click
 	
 	#Instagram
-	buttons[11].find_element(:css, 'a').click
+	buttons[12].find_element(:css, 'a').click
 	sleep(2)
 	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
 	sleep(2)
@@ -535,7 +543,7 @@ def connect_FbTwIns()
 	sleep(2)
 	
 	#Email Invitation
-	buttons[12].find_element(:css, 'a').click
+	buttons[13].find_element(:css, 'a').click
 	sleep(2)
 	@driver.find_element(:css, 'input.sharing-list-field.new-name').clear
 	@driver.find_element(:css, 'input.sharing-list-field.new-name').send_keys "Tripthi Shetty"
@@ -543,27 +551,49 @@ def connect_FbTwIns()
 	@driver.find_element(:css, 'input.sharing-list-field.new-email').clear
 	@driver.find_element(:css, 'input.sharing-list-field.new-email').send_keys "tripthi.testmember1@socialmedialink.com"
 	sleep(1)
-	@driver.find_element(:css, 'button.btn.btn-default').click
+	@driver.find_element(:css, 'button.btn.btn-color.btn-block.add-button').click
 	sleep(3)
-	@driver.find_element(:css, "textarea#shares__message").clear
-	@driver.find_element(:css, "textarea#shares__message").send_keys "Activity details with date time and location"
+	@driver.find_element(:css, "textarea[name='shares[][message]']").clear
+	@driver.find_element(:css, "textarea[name='shares[][message]']").send_keys "Activity details with date time and location"
 	sleep(1)
 	@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
 	sleep(1)
 	
 	#Bazaar Voice Sharing tool
-	buttons[13].find_element(:css, 'a').click
+	buttons[14].find_element(:css, 'a').click
+	sleep(2)
+	@driver.find_element(:id,'shares__bazaarvoice_title').clear
+	@driver.find_element(:id,'shares__bazaarvoice_title').send_keys "Bazzar Voice Title"
+	sleep(2)
+	@driver.find_element(:css,  "textarea[placeholder='Write your review here']").send_keys "Bazzar Voice review Bazzar Voice review  Bazzar Voice review  Bazzar Voice review"
+	sleep(2)
+	@driver.find_element(:xpath, "//div[@sml-rating='service.bazaarvoice.bazaarvoice_rating']/img[3]").click
+	sleep(2)
+	@driver.find_element(:css,"label.control-checkbox[for='bazaarvoice_cb']").click
 	sleep(2)
 	
-	
-	
 	#submit
-	@driver.find_element(:css, "button.btn-primary[type='submit']").click
+	#@driver.find_element(:css, "button.btn-primary[type='submit']").click
 	@driver.find_element(:xpath, "//button[@type='submit']").click
-	@driver.find_element(:xpath, "(//button[@type='button'])[2]").click
+	#@driver.find_element(:xpath, "(//button[@type='button'])[2]").click
 	@driver.save_screenshot "Screenshots/sharingtools_posts.png"
+	sleep(10)
 	
-  end
+    end
+	
+	def sharing_activity_ShareALink()
+	#Share A link 
+	abc = @driver.find_element(:xpath, "//input[@class='sharing-list-field']").attribute('value') 
+	#abc = Clipboard.data
+	puts "vbvb"
+	puts abc
+	@driver.get(abc)
+	sleep(4)
+	@driver.get(@base_member_url)
+	sleep(2)
+    @driver.find_element(:link, "Sharing Tools Activity").click
+	sleep(2)
+	end
   
   
   

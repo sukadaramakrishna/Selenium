@@ -3,8 +3,8 @@ require "selenium-webdriver"
 require "rspec"
 require "yaml"
 include RSpec::Expectations
-require "win32/clipboard"
-include Win32 
+#require "win32/clipboard"
+#include Win32 
 
 describe "SharingtoolsShareLink" do
 
@@ -23,11 +23,11 @@ describe "SharingtoolsShareLink" do
   end
   
   it "test_sharingtools_share_link" do
-	create_2activity()
-	mission_logic()
-	sleep(180)
+	#create_2activity()
+	#mission_logic()
+	#sleep(180)
 	login()
-	update_shippingaddress()
+	#update_shippingaddress()
 	sharing_activity()
   end
   
@@ -114,7 +114,7 @@ describe "SharingtoolsShareLink" do
  
   def login()
 	@driver.get(@config['member']['base_url']	+ "/home")
-    @driver.find_element(:link, "or your email address").click
+    #@driver.find_element(:link, "or your email address").click
     @driver.find_element(:id, "member_email").clear
     @driver.find_element(:id, "member_email").send_keys @config['member']['email']
     @driver.find_element(:id, "member_password").clear
