@@ -16,7 +16,7 @@ signup:
   base_url_twitter: https://twitter.com
 admin:
   base_url: https://admin-staging.socialmedialink.com
-  email: tripthi.testmember1@socialmedialink.com
+  email: tripthi.testmember11@socialmedialink.com
   pass: 12345678
 member: 
   base_url: https://tripsprint57-staging.socialmedialink.com

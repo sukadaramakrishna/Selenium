@@ -33,6 +33,7 @@ describe "CreateSurvey" do
     @driver.get(@base_url + "/admins/sign_in")
     @driver.find_element(:id, "admin_email").clear
     @driver.find_element(:id, "admin_email").send_keys @config['admin']['email']
+	sleep(1)
     @driver.find_element(:id, "admin_password").clear
     @driver.find_element(:id, "admin_password").send_keys @config['admin']['pass']
     @driver.find_element(:name, "commit").click
