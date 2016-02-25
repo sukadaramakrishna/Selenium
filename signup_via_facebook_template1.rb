@@ -36,7 +36,7 @@ describe "FacebookSMLSignup" do
     @driver.find_element(:id, "pass").clear
     @driver.find_element(:id, "pass").send_keys @pass
     sleep(1)
-    @driver.find_element(:id, "u_0_2").click
+    @driver.find_element(:id, "loginbutton").click
 	sleep(1)
 	#@driver.find_element(:css, "button[name='__CONFIRM__']").click
 	sleep(3)

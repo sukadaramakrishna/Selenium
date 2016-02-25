@@ -46,7 +46,7 @@ describe "ConnectToSocialmedia" do
     @driver.find_element(:id, "pass").clear
     @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
     sleep(1)
-    @driver.find_element(:id, "u_0_2").click
+    @driver.find_element(:id, "loginbutton").click
 
 	#connect twitter
     @driver.find_element(:link, "Connect").click

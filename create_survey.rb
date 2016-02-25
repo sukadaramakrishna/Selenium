@@ -201,7 +201,7 @@ describe "CreateSurvey" do
 	puts "abc"
 	@driver.execute_script('$(\'input.js-badge-image-field[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
 	sleep(3)
 	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
 	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
@@ -219,7 +219,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:xpath, "//td[contains(text(), '25') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1207']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1253']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

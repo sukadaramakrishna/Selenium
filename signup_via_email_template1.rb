@@ -74,10 +74,12 @@ describe "EmailSignup" do
 	sleep(1)
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1998")
 	sleep(3)
-    @driver.find_element(:css, "label.control-radio").click
+    @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
+	sleep(2)
     @driver.find_element(:name, "commit").click
 	@driver.save_screenshot "Screenshots/tutorial.png"
 	@driver.find_element(:css, "a.btn.btn-color.btn-lg").click
+	
 	sleep(2)
   end
   

@@ -1,12 +1,12 @@
 signup:
-  first_name: karen											
-  last_name: baker
+  first_name: bella											
+  last_name: lawrence
   address1: 483 West, 37th street
   address2: #33
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthi.shetty@socialmedialink.com
+  email_facebook: tripthi.testmember19@socialmedialink.com
   pass_facebook: general1234
   email_twitter: tripthi.testmember20@socialmedialink.com
   pass_twitter: general1234
@@ -20,7 +20,7 @@ admin:
   pass: 12345678
 member: 
   base_url: https://tripsprint59.socialmedialink.com
-  email: cameron.carr@yopmail.com
+  email: karen.baker@yopmail.com
   pass: 12345678
   
   

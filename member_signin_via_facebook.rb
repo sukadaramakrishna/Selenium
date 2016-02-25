@@ -35,7 +35,7 @@ describe "MemberSigninViaFacebook" do
     #@driver.find_element(:id, "email").clear
     #@driver.find_element(:id, "email").send_keys "tripthi.shetty@socialmedialink.co"
     #@driver.find_element(:id, "u_0_1").click
-    @driver.find_element(:id, "u_0_2").click
+    @driver.find_element(:id, "loginbutton").click
   end
   
   def element_present?(how, what)

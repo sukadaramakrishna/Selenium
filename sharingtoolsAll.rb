@@ -26,13 +26,13 @@ describe "Sharing Tools" do
   it "test_sharing_tools" do
     create_activity()
 	mission_logic()
-	sleep(240)
-	login()
-	update_shippingaddress()
-	connect_FbTwIns()
-	accept_activity()
-	sharing_activity()
-	sharing_activity_ShareALink()
+	#sleep(240)
+	#login()
+	#update_shippingaddress()
+	#connect_FbTwIns()
+	#accept_activity()
+	#sharing_activity()
+	#sharing_activity_ShareALink()
 	
   end
   
@@ -101,7 +101,7 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook_page.suggested_phrase']").clear
 	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.facebook_page.suggested_phrase']").send_keys "Facebook Page Suggested Phrase"
 	sleep(1)
-	
+		
 	#Toggle Twitter
     @driver.find_element(:id, "switch_cb_twitter").click
 	sleep(1)
@@ -115,13 +115,22 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea.ng-pristine[ng-model='activity.twitter.suggested_phrase']").send_keys "Suggested Phrase"
 	sleep(2)
 	
+	#scroll
+	@driver.execute_script("scroll(0, 750);")
+	sleep(4)
+	
 	#Toggle Face2face
     @driver.find_element(:id, "switch_cb_face2face").click
 	sleep(2)
 	
+	#scroll
+	@driver.execute_script("scroll(0, 750);")
+	sleep(4)
+	
 	#Toggle Upload Facebook
 	@driver.find_element(:id, "switch_cb_upload_photo_facebook").click
 	sleep(2)
+	
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
@@ -142,6 +151,10 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[ng-model='activity.upload_photo_fb_page.suggested_phrase']").clear
 	@driver.find_element(:css, "textarea[ng-model='activity.upload_photo_fb_page.suggested_phrase']").send_keys "Upload photo to facebook page suggested Phrase"
 	sleep(2)
+	
+	#scroll
+	@driver.execute_script("scroll(0, 750);")
+	sleep(4)
 	
 	#Toggle Upload Twitter
 	@driver.find_element(:id, "switch_cb_upload_photo_twitter").click
@@ -180,7 +193,7 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[ng-model='activity.pinterest.suggested_phrase']").send_keys "Click this pin to visit Smiley360! You'll love being a member :)"
 	@driver.execute_script('$(\'input.js-pinterest-image[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, "input.js-pinterest-image[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\brand.jpe")
+	@driver.find_element(:css, "input.js-pinterest-image[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\Brandconnect.jpe")
 	sleep(5)
 	
 	#scroll
@@ -207,12 +220,16 @@ describe "Sharing Tools" do
 	@driver.execute_script("scroll(0, 2000);")
 	sleep(4)
 	@driver.find_element(:xpath, "//div[@id='s2id_topic-search']").click
-	@driver.find_element(:xpath, "//a[@class='select2-choice']").click
+	#@driver.find_element(:xpath, "//a[@class='select2-choice']").click
 	sleep(3)
 	drop = @driver.find_element(:id, "select2-results-3")
 	drop.find_element(:css,"li.select2-results-dept-0.select2-result.select2-result-selectable.select2-highlighted").click
 	sleep(2)
 
+	#scroll
+	@driver.execute_script("scroll(0, 1000);")
+	sleep(4)
+	
 	#Toggle retail review
 	@driver.find_element(:id, "switch_cb_retail_review").click
 	sleep(3)
@@ -236,6 +253,11 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea#custom_landing_page_url").send_keys "http://tripsprint39-staging.socialmedialink.com/promo/52b"
 	sleep(2)
 	
+	#scroll
+	@driver.execute_script("scroll(0, 1200);")
+	sleep(4)
+	
+	
 	#Toggle Bazaar Voice
 	@driver.find_element(:id,"switch_cb_bazaarvoice").click
 	sleep(1)
@@ -249,9 +271,15 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[placeholder='Instructions for member']").send_keys "Bazzar Voice Instructions"
 	sleep(2)
 	
+	#scroll
+	@driver.execute_script("scroll(0, 1200);")
+	sleep(4)
+	
+	
 	#Toggle Share A Link
 	@driver.find_element(:id, "switch_cb_share_link").click
 	sleep(1)
+	
 	#scroll
 	@driver.execute_script("scroll(0, 3000);")
 	sleep(4)
@@ -259,13 +287,13 @@ describe "Sharing Tools" do
 	sleep(2)
 	
 	#scroll
-	@driver.execute_script("scroll(0, 1200);")
+	@driver.execute_script("scroll(0,1500);")
 	sleep(4)
-	
 	
 	#save
     @driver.find_element(:css, "button.btn.btn-sidebar.btn-primary").click
 	sleep(6)
+	
 	end
 	def mission_logic()
     @driver.find_element(:link, "Sharing Tools").click
@@ -274,9 +302,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '8') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '25') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1790']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1253']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -341,7 +369,7 @@ def connect_FbTwIns()
     @driver.find_element(:id, "pass").clear
     @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
     sleep(1)
-    @driver.find_element(:id, "u_0_2").click
+    @driver.find_element(:id, "loginbutton").click
 
 	#connect twitter
     @driver.find_element(:link, "Connect").click
