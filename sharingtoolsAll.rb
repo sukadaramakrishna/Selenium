@@ -24,15 +24,15 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    create_activity()
-	mission_logic()
+    #create_activity()
+	#mission_logic()
 	#sleep(240)
-	#login()
-	#update_shippingaddress()
-	#connect_FbTwIns()
-	#accept_activity()
-	#sharing_activity()
-	#sharing_activity_ShareALink()
+	login()
+	update_shippingaddress()
+	connect_FbTwIns()
+	accept_activity()
+	sharing_activity()
+	sharing_activity_ShareALink()
 	
   end
   
@@ -169,7 +169,7 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[ng-model='activity.upload_photo_twitter.suggested_phrase']").send_keys "Upload photo to twitter suggested Phrase"
 	
 	#scroll
-	@driver.execute_script("scroll(0, 750);")
+	@driver.execute_script("scroll(0, 800);")
 	sleep(4)
 	
 	#Toggle Blog
@@ -302,9 +302,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '25') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '26') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1253']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1974']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
