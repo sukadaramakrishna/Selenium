@@ -28,7 +28,8 @@ describe "FacebookSMLSignup" do
   it "test_facebook_signup" do
     @driver.get(@base_url+'/home')
 
-    @driver.find_element(:css, "a[href='/members/auth/facebook']").click
+    #@driver.find_element(:css, "a.login-connect-facebook[href='/members/auth/facebook']").click
+	@driver.find_element(:css, "a.login-connect-facebook").click
     sleep(2)
     @driver.find_element(:id, "email").clear
     @driver.find_element(:id, "email").send_keys @email

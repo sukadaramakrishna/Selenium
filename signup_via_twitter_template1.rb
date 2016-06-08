@@ -27,7 +27,8 @@ describe "TwitterSmlSignup" do
   
   it "test_twitter_signup" do
     @driver.get(@base_url + "/home")
-    @driver.find_element(:css, "a[href='/members/auth/twitter']").click
+    #@driver.find_element(:css, "a[href='/members/auth/twitter']").click
+	@driver.find_element(:css, "a.login-connect-twitter").click
 	sleep(1)
 	
     @driver.find_element(:id, "username_or_email").clear

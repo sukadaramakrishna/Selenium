@@ -25,7 +25,8 @@ describe "MemberSigninViaTwitter" do
 	sleep(2)
 	@driver.manage.window.maximize
 	sleep(2)
-    @driver.find_element(:xpath, "//a[@href='/members/auth/twitter']").click
+    #@driver.find_element(:xpath, "//a[@href='/members/auth/twitter']").click
+	@driver.find_element(:css, "a.login-connect-twitter").click
 	sleep(2)
     #@driver.find_element(:link, "twitter").click
     @driver.find_element(:id, "username_or_email").clear

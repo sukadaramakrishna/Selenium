@@ -32,7 +32,7 @@ describe "Sharing Tools" do
 	connect_FbTwIns()
 	accept_activity()
 	sharing_activity()
-	sharing_activity_ShareALink()
+	#sharing_activity_ShareALink()
 	
   end
   
@@ -256,7 +256,7 @@ describe "Sharing Tools" do
 	#scroll
 	@driver.execute_script("scroll(0, 1200);")
 	sleep(4)
-	
+=begin	
 	
 	#Toggle Bazaar Voice
 	@driver.find_element(:id,"switch_cb_bazaarvoice").click
@@ -274,7 +274,7 @@ describe "Sharing Tools" do
 	#scroll
 	@driver.execute_script("scroll(0, 1200);")
 	sleep(4)
-	
+=end	
 	
 	#Toggle Share A Link
 	@driver.find_element(:id, "switch_cb_share_link").click
@@ -300,11 +300,11 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:link, "Mission Logic").click
 	sleep(1)
-    @driver.find_element(:css, "div.mlogic-step.ng-scope").click
+    @driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '26') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1974']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1357']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -438,7 +438,7 @@ def connect_FbTwIns()
 	textareas = @driver.find_elements(:css, "div.relative")
 	textareas[0].find_element(:css, 'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(2)
-	@driver.find_element(:css, "label.control-checkbox[for='facebook_fb_cb']").click
+	@driver.find_element(:css, "label.control-checkbox[for='facebook_cb']").click
 	sleep(1)
 	@driver.execute_script("scroll(0, 250);")
 	sleep(4)
@@ -452,7 +452,7 @@ def connect_FbTwIns()
 	textareas = @driver.find_elements(:css, "div.relative")
 	textareas[1].find_element(:css, 'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(2)
-	@driver.find_element(:css, "label.control-checkbox[for='facebook_page_fb_cb']").click
+	@driver.find_element(:css, "label.control-checkbox[for='facebook_page_cb']").click
 	sleep(1)
 	@driver.execute_script("scroll(0, 250);")
 	sleep(4)
@@ -477,7 +477,7 @@ def connect_FbTwIns()
 	sleep(2)
 	textareas[3].find_element(:css, 'textarea').send_keys "face2face member text face2face member text face2face member text face2face member text face2face member text"
 	sleep(2)
-	
+	@driver.find_element(:css, "label.control-checkbox[for='face2face_cb']").click
 	
 =begin	
 	textareas = @driver.find_elements(:css, "div.relative")
@@ -514,7 +514,7 @@ def connect_FbTwIns()
 	sleep(2)
 	textareas[5].find_element(:css,'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(1)
-	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_fb_cb']").click
+	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_facebook_cb']").click
 	
 	#Upload to Facebook Page post
 	buttons[7].find_element(:css, 'a').click
@@ -554,6 +554,7 @@ def connect_FbTwIns()
 	sleep(1)
 	uploads[4].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
+	@driver.find_element(:css, "label.control-checkbox[for='retail_review_cb']").click
 	
 	#Pinterest
 	buttons[11].find_element(:css, 'a').click
@@ -584,9 +585,9 @@ def connect_FbTwIns()
 	@driver.find_element(:css, "textarea[name='shares[][message]']").clear
 	@driver.find_element(:css, "textarea[name='shares[][message]']").send_keys "Activity details with date time and location"
 	sleep(1)
-	@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
+	#@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
 	sleep(1)
-	
+=begin	
 	#Bazaar Voice Sharing tool
 	buttons[14].find_element(:css, 'a').click
 	sleep(2)
@@ -599,7 +600,7 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.find_element(:css,"label.control-checkbox[for='bazaarvoice_cb']").click
 	sleep(2)
-	
+=end	
 	#submit
 	#@driver.find_element(:css, "button.btn-primary[type='submit']").click
 	@driver.find_element(:xpath, "//button[@type='submit']").click

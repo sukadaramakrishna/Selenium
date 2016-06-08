@@ -168,7 +168,7 @@ describe "AdminSettings" do
     #Brand connect Toggle
     @driver.find_element(:xpath, "(//input[@type='checkbox'])[5]").click
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").clear
-    @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").send_keys "Smiley Blog"
+    @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").send_keys "Brand Connect"
 	sleep(1)
 	#Tutorial Toggle
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[6]").click
@@ -185,7 +185,7 @@ describe "AdminSettings" do
 	#Mission Completion Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[9]").click
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_completion_email.value']").clear
-    @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_completion_email.value']").send_keys "3-17-15-mandrill-mission-completed"
+    @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_completion_email.value']").send_keys "mission-complete-dev"
 	sleep(1)
 	#Post Acceptance Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[10]").click

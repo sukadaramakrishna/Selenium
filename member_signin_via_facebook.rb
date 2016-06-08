@@ -25,7 +25,8 @@ describe "MemberSigninViaFacebook" do
 	sleep(2)
 	@driver.manage.window.maximize
 	sleep(2)
-	@driver.find_element(:xpath, "//a[@href='/members/auth/facebook']").click
+	#@driver.find_element(:xpath, "//a[@href='/members/auth/facebook']").click
+	@driver.find_element(:css, "a.login-connect-facebook").click
     sleep(2)
     @driver.find_element(:id, "email").clear
     @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']

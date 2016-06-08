@@ -201,7 +201,7 @@ describe "CreateSurvey" do
 	puts "abc"
 	@driver.execute_script('$(\'input.js-badge-image-field[type="file"]\').attr("style", "");');
 	sleep(1)
-	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg")
+	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
 	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
 	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
@@ -214,12 +214,13 @@ describe "CreateSurvey" do
 	def survey_missionlogic
     @driver.find_element(:link, "Mission Logic").click
 	sleep(1)
-	@driver.find_element(:css, "div.mlogic-step.ng-scope").click
+	#@driver.find_element(:css, "div.mlogic-step.ng-scope").click
+	@driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '26') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1974']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1357']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
