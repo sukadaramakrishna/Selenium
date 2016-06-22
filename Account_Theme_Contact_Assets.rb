@@ -99,34 +99,34 @@ describe "AccountThemeContactAssets" do
 	sleep(2)
 	
 	#Privacy
-    @driver.find_element(:css, "input.policy_name.form-control").clear
-    @driver.find_element(:css, "input.policy_name.form-control").send_keys "Privacy Name"
-    @driver.find_element(:css, "input.policy_text.form-control").click
-    @driver.find_element(:css, "input.policy_text.form-control").clear
-    @driver.find_element(:css, "input.policy_text.form-control").send_keys "Privacy Text Privacy TextPrivacy TextPrivacy TextPrivacy TextPrivacy TextPrivacy Text\n\nPrivacy TextPrivacy TextPrivacy Text"
-    @driver.find_element(:css, "input.btn.btn-default[@value='Update Privacy']").click
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[2]").clear
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[2]").send_keys "Privacy Name"
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[2]").click
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[2]").clear
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[2]").send_keys "Privacy Text Privacy TextPrivacy TextPrivacy TextPrivacy TextPrivacy TextPrivacy Text\n\nPrivacy TextPrivacy TextPrivacy Text"
+    @driver.find_element(:xpath, "//input[@name='commit'][@value='Update Privacy']").click
 	
 	#scroll
 	@driver.execute_script("scroll(0, 750);")
 	sleep(4)
 	
 	#Disclosure
-    @driver.find_element(:css, "#edit_policy_1732 > div.row > div.col-md-8 > div.form-group > #policy_name").clear
-    @driver.find_element(:css, "#edit_policy_1732 > div.row > div.col-md-8 > div.form-group > #policy_name").send_keys "Disclosure Name"
-    @driver.find_element(:css, "#edit_policy_1732 > div.row > div.col-md-8 > div.form-group > #policy_text").clear
-    @driver.find_element(:css, "#edit_policy_1732 > div.row > div.col-md-8 > div.form-group > #policy_text").send_keys "Disclosure Text Disclosure TextDisclosure TextDisclosure TextDisclosure Text\nDisclosure TextDisclosure TextDisclosure TextDisclosure Text"
-    @driver.find_element(:css, "#edit_policy_1732 > input[name=\"commit\"]").click
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[3]").clear
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[3]").send_keys "Disclosure Name"
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[3]").clear
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[3]").send_keys "Disclosure Text Disclosure TextDisclosure TextDisclosure TextDisclosure Text\nDisclosure TextDisclosure TextDisclosure TextDisclosure Text"
+    @driver.find_element(:xpath, "//input[@name='commit'][@value='Update Disclosure']").click
 	
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
 	
 	#About us
-    @driver.find_element(:css, "#edit_policy_1733 > div.row > div.col-md-8 > div.form-group > #policy_name").clear
-    @driver.find_element(:css, "#edit_policy_1733 > div.row > div.col-md-8 > div.form-group > #policy_name").send_keys "About Us name"
-    @driver.find_element(:css, "#edit_policy_1733 > div.row > div.col-md-8 > div.form-group > #policy_text").clear
-    @driver.find_element(:css, "#edit_policy_1733 > div.row > div.col-md-8 > div.form-group > #policy_text").send_keys "About Us Text About Us TextAbout Us TextAbout Us TextAbout Us Text\n\nAbout Us TextAbout Us TextAbout Us Text"
-    @driver.find_element(:css, "#edit_policy_1733 > input[name=\"commit\"]").click
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[4]").clear
+    @driver.find_element(:xpath, "(//input[@class='form-control'][@id='policy_name'])[4]").send_keys "About Us name"
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[4]").clear
+    @driver.find_element(:xpath, "(//textarea[@class='form-control'][@id='policy_text'])[4]").send_keys "About Us Text About Us TextAbout Us TextAbout Us TextAbout Us Text\n\nAbout Us TextAbout Us TextAbout Us Text"
+    @driver.find_element(:xpath, "//input[@name='commit'][@value='Update About Us']").click
 	
 	
     @driver.find_element(:link, "Home Page").click

@@ -1,12 +1,12 @@
 signup:
-  first_name: jacob 											
-  last_name: ross
+  first_name: sansa 											
+  last_name: stark
   address1: 483 West, 37th street
   address2: #33
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthi.shetty@socialmedialink.com
+  email_facebook: sukada.testmember8@socialmedialink.com
   pass_facebook: general1234
   email_twitter: sukada.ramakrishna@socialmedialink.com	
   pass_twitter: general1234
@@ -19,8 +19,8 @@ admin:
   email: sansa.stark@yopmail.com
   pass: 12345678
 member: 
-  base_url: https://tripsprint66a-staging.socialmedialink.com/home
-  email: matt.smith@yopmail.com
+  base_url: https://tripsprint66a-staging.socialmedialink.com/
+  email: sansa.stark@yopmail.com
   pass: 12345678
   
   

@@ -24,9 +24,9 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(240)
+    create_activity()
+	mission_logic()
+	sleep(240)
 	login()
 	update_shippingaddress()
 	connect_FbTwIns()
@@ -60,7 +60,7 @@ describe "Sharing Tools" do
 	sleep(2)
 	@driver.find_element(:css, "li.test-hub-new-activity").click
 	sleep(3)
-    @driver.find_element(:link, "New Activity").click
+    @driver.find_element(:css, "New Activity").click
 	sleep(7)
     @driver.find_element(:css, "button.btn-edit").click
 	sleep(3)
@@ -302,9 +302,9 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '6') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '16') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__1357']").click
+	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2521']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

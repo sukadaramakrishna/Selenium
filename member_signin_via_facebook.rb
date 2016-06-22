@@ -26,6 +26,7 @@ describe "MemberSigninViaFacebook" do
 	@driver.manage.window.maximize
 	sleep(2)
 	#@driver.find_element(:xpath, "//a[@href='/members/auth/facebook']").click
+	sleep(2)
 	@driver.find_element(:css, "a.login-connect-facebook").click
     sleep(2)
     @driver.find_element(:id, "email").clear
