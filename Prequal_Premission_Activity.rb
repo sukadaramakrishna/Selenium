@@ -41,7 +41,7 @@ describe "CreateSurvey" do
     @driver.find_element(:link, "Mission Hubs").click
     @driver.find_element(:link, "New Mission Hub").click
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
-    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Survey ABC"
+    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Prequal Survey"
 	sleep(1)
    	@driver.find_element(:css, "button.btn-default").click
 	@driver.find_element(:css, "li.test-hub-new-survey").click
@@ -50,7 +50,7 @@ describe "CreateSurvey" do
 	sleep(7)
 	@driver.find_element(:css, "button.btn-edit").click
     @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").clear
-    @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").send_keys "Survey ABC"
+    @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").send_keys "Prequal Survey"
 	#Single Answer Question
     @driver.find_element(:css, "span.icon-single_answer").click
 	@driver.find_element(:css, "textarea.test-survey-item-field[placeholder='Type a question']").clear
@@ -177,7 +177,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "button.test-question-create").click
 	sleep(3)
 	
-    @driver.find_element(:link, "Survey ABC").click
+    @driver.find_element(:link, "Prequal Survey").click
 	sleep(1)
 	
 	@driver.find_element(:css, "a.rowclick.test-hub-structure-item-link.ng-binding").click
@@ -204,11 +204,11 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
 	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
-	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
+	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Prequal Survey Badge name"
 	@driver.find_element(:xpath, "//button[@ng-click='save()']").click
 	sleep(2)
 	
-	@driver.find_element(:link, "Survey ABC").click
+	@driver.find_element(:link, "Prequal Survey").click
 	sleep(1)
 	end
 	def survey_missionlogic
@@ -217,7 +217,7 @@ describe "CreateSurvey" do
 	#@driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '11') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '16') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
 	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2575']").click
@@ -234,84 +234,7 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "button.test-hub-logic-save").click
 	sleep(2)
   end
-=begin
-  def check_survey() 
-  #check if survey exists on user side
-    @driver.get(@config['member']['base_url']	+ "/home")
-    @driver.find_element(:link, "or your email address").click
-    @driver.find_element(:id, "member_email").clear
-    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
-    @driver.find_element(:id, "member_password").clear
-    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
-    @driver.find_element(:name, "commit").click
-	sleep(3)
-	@driver.save_screenshot "Screenshots/survey.png"
-	
-	@driver.find_element(:link, "Survey ABC").click
-	sleep(2)
-	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
-	sleep(2)
-	@driver.find_element(:css, "a.btn.btn-color").click
-	sleep(2)
-	#Single Answer select
-	@driver.find_element(:css, "label.control-radio.ng-binding[for='radio_text_6525_1']").click
-	sleep(2)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Multiple Answer select
-	@driver.find_element(:css, "label.control-checkbox.ng-binding[for='checkbox_text_6526_0']").click
-	sleep(2)
-	@driver.find_element(:css, "label.control-checkbox.ng-binding[for='checkbox_text_6526_2']").click
-	sleep(2)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Text Answer
-	@driver.find_element(:css, "textarea.q-field.ng-pristine.ng-valid").click
-	@driver.find_element(:css, "textarea.q-field.ng-pristine.ng-valid").send_keys "abc"
-	sleep(2)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Numbers Answer
-	@driver.find_element(:css, "input.form-control-number[placeholder='Answer with digits']").click
-	@driver.find_element(:css, "input.form-control-number[placeholder='Answer with digits']").send_keys "123"
-	sleep(2)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Yes or No Answer
-	@driver.find_element(:css, "label.control-radio.ng-binding[for='radio_text_6529_0']").click
-	sleep(2)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Ranking Answer
-	#int source = span.control-sortable.js-handle.ng-binding[0].element
-	#int target = span.control-sortable.js-handle.ng-binding[1].element
-	#@browser.action.drag_and_drop(source, target).perform
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Single Matrix Answer
-	@driver.find_element(:css, "label.control-radio[for='radio_matrix_6531_27979_0']").click
-	sleep(1)
-	@driver.find_element(:css, "label.control-radio[for='radio_matrix_6531_27980_1']").click
-	sleep(1)
-	@driver.find_element(:css, "label.control-radio[for='radio_matrix_6531_27981_2']").click
-	sleep(1)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-	#Multiple Matrix Answers
-	@driver.find_element(:css, "label.control-checkbox[for='checkbox_matrix_6532_27985_0']").click
-	sleep(1)
-	@driver.find_element(:css, "label.control-checkbox[for='checkbox_matrix_6532_27986_0']").click
-	sleep(1)
-	@driver.find_element(:css, "label.control-checkbox[for='checkbox_matrix_6532_27987_1']").click
-	sleep(1)
-	@driver.find_element(:css, "label.control-checkbox[for='checkbox_matrix_6532_27986_2']").click
-	sleep(1)
-	@driver.find_element(:css, "button.btn.button").click
-	sleep(2)
-end
-	
-=end
-  
+
   def element_present?(how, what)
     @driver.find_element(how, what)
     true

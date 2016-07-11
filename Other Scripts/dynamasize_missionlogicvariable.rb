@@ -41,7 +41,7 @@ describe "CreateSurvey" do
     @driver.find_element(:link, "Mission Hubs").click
     @driver.find_element(:link, "New Mission Hub").click
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
-    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Survey ABC"
+    @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Mission logic variable test"
 	sleep(1)
    	@driver.find_element(:css, "button.btn-default").click
 	@driver.find_element(:css, "li.test-hub-new-survey").click
@@ -50,7 +50,7 @@ describe "CreateSurvey" do
 	sleep(7)
 	@driver.find_element(:css, "button.btn-edit").click
     @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").clear
-    @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").send_keys "Survey ABC"
+    @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").send_keys "Mission logic variable test"
 	#Single Answer Question
     @driver.find_element(:css, "span.icon-single_answer").click
 	@driver.find_element(:css, "textarea.test-survey-item-field[placeholder='Type a question']").clear
@@ -71,113 +71,8 @@ describe "CreateSurvey" do
 	sleep(1)
 	@driver.find_element(:css, "button.test-question-create").click
 	sleep(2)
-	#Multiple Answer Question
-	@driver.find_element(:css, "li.test-question-new-multiple_answers").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Multiple Answer Question "
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-answer-0").clear
-	@driver.find_element(:css, "textarea.test-question-answer-0").send_keys "Answer 1"
-	@driver.action.send_keys(:enter).perform
-	sleep(1)
-	@driver.find_element(:css, "textarea.test-question-answer-1").clear
-	@driver.find_element(:css, "textarea.test-question-answer-1").send_keys "Answer 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(1)
-	@driver.find_element(:css, "textarea.test-question-answer-2").clear
-	@driver.find_element(:css, "textarea.test-question-answer-2").send_keys "Answer 3"
-	sleep(1)
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(2)
-	#Text Question
-	@driver.find_element(:css, "li.test-question-new.test-question-new-text").click
-	sleep(3)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Text Question "
-	sleep(2)
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(2)
-	#Numbers Question
-	@driver.find_element(:css, "li.test-question-new.test-question-new-numbers").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Numbers Question "
-	sleep(2)
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(2)
-	#Yes or No
-	@driver.find_element(:css, "li.test-question-new.test-question-new-yes_or_no").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Yes or No Question "
-	sleep(2)
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(3)
 	
-	#Matrix Single
-	@driver.find_element(:css, "li.test-question-new.test-question-new-matrix_with_single_answer").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Single Matrix Question "
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-0").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-0").send_keys "row 1"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-1").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-1").send_keys "row 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-2").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-2").send_keys "row 3"
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-0").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-0").send_keys "col 1"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-1").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-1").send_keys "col 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-2").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-2").send_keys "col 3"
-	sleep(2)
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(3)
-	#Matrix Multiple
-	@driver.find_element(:css, "li.test-question-new.test-question-new-matrix_with_multiple_answers").click
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-name").clear
-	@driver.find_element(:css, "textarea.test-question-name").send_keys "Multiple Matrix Question "
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-0").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-0").send_keys "row 1"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-1").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-1").send_keys "row 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-row-2").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-row-2").send_keys "row 3"
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-0").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-0").send_keys "col 1"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-1").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-1").send_keys "col 2"
-	@driver.action.send_keys(:enter).perform
-	sleep(2)
-	@driver.find_element(:css, "textarea.test-question-matrix-col-2").clear
-	@driver.find_element(:css, "textarea.test-question-matrix-col-2").send_keys "col 3"
-	sleep(2)
-	
-	@driver.find_element(:css, "button.test-question-create").click
-	sleep(3)
-	
-    @driver.find_element(:link, "Survey ABC").click
+    @driver.find_element(:link, "Mission logic variable test").click
 	sleep(1)
 	
 	@driver.find_element(:css, "a.rowclick.test-hub-structure-item-link.ng-binding").click
@@ -204,11 +99,11 @@ describe "CreateSurvey" do
 	@driver.find_element(:css, "input.js-badge-image-field[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
 	sleep(3)
 	@driver.find_element(:css, "textarea.test-activity-badge-name").clear
-	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Survey ABC Badge name"
+	@driver.find_element(:css, "textarea.test-activity-badge-name").send_keys "Mission logic variable test Badge name"
 	@driver.find_element(:xpath, "//button[@ng-click='save()']").click
 	sleep(2)
 	
-	@driver.find_element(:link, "Survey ABC").click
+	@driver.find_element(:link, "Mission logic variable test").click
 	sleep(1)
 	end
 	def survey_missionlogic
@@ -217,12 +112,13 @@ describe "CreateSurvey" do
 	#@driver.find_element(:css, "div.mlogic-step.ng-scope").click
 	@driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '11') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '16') and @class='day']").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
 	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2575']").click
-	#@driver.find_element(:css, "label.control-checkbox-primary[contains(for(),'checkbox__']").click
-	@driver.find_element(:xpath, "//span[text()='All Members']").click
+	#@driver.find_element(:xpath, "//span[text()='All Members']").click
+	@driver.find_element(:xpath, "//span[text()='Males']").click
+	#@driver.find_element(:xpath, "//span[text()='"+x+"']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

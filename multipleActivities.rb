@@ -23,7 +23,7 @@ describe "MultipleActivities" do
   
   it "test_multiple_activities" do
   login()
-  #creating_groups()
+  creating_groups()
   creating_activities()
   mission_logic()
   
@@ -150,9 +150,10 @@ describe "MultipleActivities" do
 	section = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-0.test-hub-logic-item-activity")
 	section[0].find_element(:css, "a").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '21') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '11') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2568']").click
+	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2568']").click
+	@driver.find_element(:xpath, "//span[text()='Males']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
@@ -178,9 +179,10 @@ describe "MultipleActivities" do
 	#@driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	@driver.find_element(:css,"li.mlogic-list-item.test-hub-logic-item-1.test-hub-logic-item-activity")
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '21') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '11') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
-	@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2569']").click
+	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2569']").click
+	@driver.find_element(:xpath, "//span[text()='Females']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)
