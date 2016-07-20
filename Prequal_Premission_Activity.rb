@@ -186,7 +186,7 @@ describe "CreateSurvey" do
 	
 	sleep(2)
 
-    @driver.find_element(:css, "textarea.mission-page-title").send_keys "Sharing Tools Activity"
+    @driver.find_element(:css, "textarea.mission-page-title").send_keys "Activity PPA"
 	sleep(1)
 	@driver.find_element(:css, "input.mission-goal").clear
 	@driver.find_element(:css, "input.mission-goal").send_keys "10"
@@ -218,41 +218,45 @@ describe "CreateSurvey" do
 	def survey_missionlogic
     @driver.find_element(:link, "Mission Logic").click
 	sleep(1)
-	#@driver.find_element(:css, "div.mlogic-step.ng-scope").click
-	#@driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	section = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-0.test-hub-logic-item-survey")
 	section[0].find_element(:css, "a").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '13') and @class='day']").click
-	#@driver.find_element(:xpath, "//td[@class='day active']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
 	@driver.find_element(:xpath, "//span[text()='All Members']").click
 	sleep(1)
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
-	sleep(1)
-	#@driver.find_element(:css, "label.control-checkbox-primary[for='send_sample_0']").click
-	sleep(1)
-	#@driver.find_element(:css, "input.ng-pristine[ng-model='rule.distribution_limit']").send_keys "1"
+	sleep(2)
 	@driver.find_element(:css, "label.switcher.ng-scope").click
 	sleep(1)
-	@driver.find_element(:css,"button.inline-select-toggle.filter-option").click
-	#@driver.find_element(:xpath,"(//button[@class='inline-select-toggle.filter-option'])[1]").click
-	@driver.find_element(:xpath,"//select[@ng-model='next_step.next_mission_rule_id']/option[2]").click
-	sleep(2)
-	#@driver.find_element(:xpath,"//ul[@class='inline-select-menu']/li[3]").click
+	@driver.find_element(:xpath,"//div[@class='mlogic-step ng-scope']/strong[3]").click
+	@driver.find_element(:xpath,"//div[@class='inline-select ng-pristine ng-valid open']/ul/li[3]").click
 	sleep(2)
 	
 	section1 = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-1.test-hub-logic-item-survey")
 	section1[0].find_element(:css, "a").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '13') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	@driver.find_element(:css, "label.switcher.ng-scope").click
 	sleep(1)
-	@driver.find_element(:css,"button.inline-select-toggle.filter-option").click
-	@driver.find_element(:xpath,"(//button[@class='inline-select-toggle filter-option'])[1]").click
+	@driver.find_element(:xpath,"//div[@class='mlogic-step ng-scope']/strong[3]").click
+	@driver.find_element(:xpath,"//div[@class='inline-select ng-pristine ng-valid open']/ul/li[4]").click
 	sleep(2)
-	@driver.find_element(:xpath,"//ul[@class='inline-select-menu']/li[4]").click
-	sleep(2)
+	
+	section2 = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-2.test-hub-logic-item-activity")
+	section2[0].find_element(:css, "a").click
+    @driver.find_element(:id, "date-start").click
+	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
+	sleep(1)
+	@driver.find_element(:css, "label.control-checkbox-primary[for='send_sample_2']").click
+	sleep(1)
+	@driver.find_element(:css, "input.ng-pristine[ng-model='rule.distribution_limit']").click
+	@driver.find_element(:css, "input.ng-pristine[ng-model='rule.distribution_limit']").send_keys "1"
+	sleep(1)
+	@driver.find_element(:xpath, "//div[@class='ng-scope']/div/label/span").click
+	sleep(1)
+	@driver.find_element(:css, "label.switcher.ng-scope").click
+	sleep(1)
 	
 	@driver.find_element(:css, "button.test-hub-logic-save").click
 	sleep(2)

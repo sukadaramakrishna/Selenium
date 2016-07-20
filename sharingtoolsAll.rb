@@ -302,7 +302,7 @@ describe "Sharing Tools" do
 	sleep(1)
     @driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '13') and @class='day']").click
+	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	@driver.find_element(:css, "button.mlogic-add-group").click
 	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2575']").click
 	@driver.find_element(:xpath, "//span[text()='All Members']").click
