@@ -26,8 +26,8 @@ describe "CreateSurvey" do
 	create_newmissionhub()
 	create_prequalsurvey()
 	create_premissionsurvey()
-	create_activity
-	survey_missionlogic()
+	create_activity()
+	missionlogic()
 	#sleep(60)
 	#check_survey()
 	end
@@ -215,13 +215,14 @@ describe "CreateSurvey" do
 	
 	end
 	
-	def survey_missionlogic
+	def missionlogic
     @driver.find_element(:link, "Mission Logic").click
 	sleep(1)
 	section = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-0.test-hub-logic-item-survey")
 	section[0].find_element(:css, "a").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
+	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
     @driver.find_element(:css, "button.mlogic-add-group").click
 	@driver.find_element(:xpath, "//span[text()='All Members']").click
 	sleep(1)
@@ -236,7 +237,8 @@ describe "CreateSurvey" do
 	section1 = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-1.test-hub-logic-item-survey")
 	section1[0].find_element(:css, "a").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
+	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	@driver.find_element(:css, "label.switcher.ng-scope").click
 	sleep(1)
 	@driver.find_element(:xpath,"//div[@class='mlogic-step ng-scope']/strong[3]").click
@@ -246,7 +248,8 @@ describe "CreateSurvey" do
 	section2 = @driver.find_elements(:css,"li.mlogic-list-item.test-hub-logic-item-2.test-hub-logic-item-activity")
 	section2[0].find_element(:css, "a").click
     @driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
+	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	sleep(1)
 	@driver.find_element(:css, "label.control-checkbox-primary[for='send_sample_2']").click
 	sleep(1)

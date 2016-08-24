@@ -52,6 +52,8 @@ describe "CreateLists" do
     # ERROR: Caught exception [Error: locator strategy either id or name must be specified explicitly.]
     @driver.find_element(:css, "a.report-link").click
     @driver.find_element(:link, "Export to CSV").click
+	@driver.find_element(:link, "Groups and Lists").click
+	sleep(2)
   end
   
   def element_present?(how, what)
