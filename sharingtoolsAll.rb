@@ -24,15 +24,15 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    #create_activity()
-	#mission_logic()
-	#sleep(240)
+    create_activity()
+	mission_logic()
+	sleep(240)
 	login()
-	#update_shippingaddress()
-	#connect_FbTwIns()
+	update_shippingaddress()
+	connect_FbTwIns()
 	accept_activity()
 	sharing_activity()
-	#sharing_activity_ShareALink()
+	sharing_activity_ShareALink()
 	
   end
   
@@ -560,7 +560,7 @@ def connect_FbTwIns()
 	#Instagram
 	buttons[10].find_element(:css, 'a').click
 	sleep(2)
-	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://instagram.com/p/2tFIamJFT7/"
+	@driver.find_element(:css, "textarea[placeholder='Please paste the link to your Instagram here']").send_keys "https://www.instagram.com/p/y4vf7rKSBQ/?taken-by=tripthi.shetty"
 	sleep(2)
 	@driver.find_element(:css, "label.control-checkbox[for='instagram_cb']").click
 	sleep(2)

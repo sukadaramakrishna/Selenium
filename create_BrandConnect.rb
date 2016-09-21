@@ -22,6 +22,15 @@ describe "CreteBrandConnect" do
   end
   
   it "test_crete_brand_connect" do
+  login()
+  filldetails()
+  createtopic()
+  creatediscussion()
+  comment()
+  seccomment()
+  end
+  
+  def login()
     @driver.get(@config['member']['base_url']	+ "/home")
 	#login
     @driver.find_element(:id, "member_email").clear
@@ -32,7 +41,9 @@ describe "CreteBrandConnect" do
 	sleep(5)
 	@driver.manage.window.maximize
 	sleep(2)
+	end
 	
+	def filldetails()
 	#Fill up details
 	@driver.find_element(:id, "member_first_name").clear
     @driver.find_element(:id, "member_first_name").send_keys "admin"
@@ -52,8 +63,9 @@ describe "CreteBrandConnect" do
     @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
 	sleep(2)
     @driver.find_element(:name, "commit").click
+	end
 	
-	
+	def createtopic()
 	#Create topic
     @driver.find_element(:link, "Brand Connect").click
     @driver.find_element(:link, "Create Topic").click
@@ -70,7 +82,9 @@ describe "CreteBrandConnect" do
     @driver.find_element(:id, "topic_title").send_keys "Title lengthy Title lengthy Title lengthy Title lengthy Title lengthyTitle lengthy Title lengthy Title lengthy Title lengthy Title lengthy Title lengthy"
     sleep(2)
 	@driver.find_element(:name, "commit").click
+	end
 	
+	def creatediscussion()
 	#Create discussion
     @driver.find_element(:link, "Start the Discussion").click
 	sleep(2)
@@ -81,14 +95,28 @@ describe "CreteBrandConnect" do
     @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Message lengthy Message lengthyMessage lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy."
     sleep(2)
 	@driver.find_element(:name, "commit").click
+	end
 	
+	def comment()
 	#Comment as an admin
     @driver.find_element(:xpath, "//textarea").clear
     @driver.find_element(:xpath, "//textarea").send_keys "comment 1"
 	sleep(2)
-    @driver.find_element(:link, "Logout").click
-    
-  end
+	@driver.find_element(:css, "div.bconnect-new-post-attach").click
+	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
+	sleep(1)
+	@driver.find_element(:css, "input[type='file']").send_keys("C:\\Users\\Tripthi\\Pictures\\Brandconnect.jpe")
+	sleep(5)
+	@driver.find_element(:css, "a.btn.btn-color.btn-md.bconnect-new-post-submit").click
+	sleep(2)
+	end 
+	
+	def seccomment()
+	#secondary comment
+	#@driver.find_element(:xpath, "//a[ng-click='startSubccomment(comment)']").click
+	
+    #@driver.find_element(:link, "Logout").click
+    end 
   
   def element_present?(how, what)
     @driver.find_element(how, what)
