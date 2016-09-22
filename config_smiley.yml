@@ -26,7 +26,8 @@ security:
   base_url: https://admin.staging.socialmedialink.com
   email: mike.ross@yopmail.com
   pass: 12345678
-
+  super_email: admin@socialmedialink.com
+  super_pass: c@E6$d&HV3n38jnd
   
   
   

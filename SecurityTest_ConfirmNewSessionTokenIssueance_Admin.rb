@@ -31,39 +31,38 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	sleep(2)
     @driver.find_element(:name, "commit").click
 	sleep(2)
+	#Get the authentication token when the member logs in the first time
+	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
+	token = auth.attribute("content")
+	puts "The authentication token when the member logged in the first time: #{token} "
+	sleep(2)
 	#Find the Logout button
 	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
 	sleep(2)
-	if(@driver.find_element(:css, "a.test-nav-logout").displayed?)
-	  @driver.find_element(:css, "a.test-nav-logout").click
-      puts "Logout button appears before logging out"
-	  sleep(2)
-    else 
-      puts "Logout button does not appear before logging out"
-    end
-	
-	#sleep(4)
-	#@driver.manage.window.maximize
-	#sleep(2)
-=begin
-	#Confirm that Logout button does not appear
-	case @driver.find_element(:css, "a.test-nav-logout").dispalyed?
-    when true
-	puts "Logout button does not appear. This confirms the session terminates after the logout and the test is successful."
-    when false 
-    puts "Logout button appears. This does not confirm the session terminated correctly and the test failed"
-    end
-=end 	
-
-    #Confirm that Login button appears
-	if(@driver.find_element(:css, "input.btn.btn-login.test-login-button").displayed?)
-	  @driver.find_element(:css, "input.btn.btn-login.test-login-button").click
-      puts "Login button appears. This confirms that session terminated correctly and the test was successful"
-	  sleep(2)
-    else 
-      puts "Login button does not appear. This confirms that the session did not terminate correctly and the test failed."
-    end
-
+	#logout the first time
+	@driver.find_element(:css, "a.test-nav-logout").click
+	sleep(2)
+	#login the second time
+	@driver.get(@base_url + "/admins/sign_in")
+    @driver.find_element(:id, "admin_email").clear
+    @driver.find_element(:id, "admin_email").send_keys @config['security']['email']
+	sleep(2)
+    @driver.find_element(:id, "admin_password").clear
+    @driver.find_element(:id, "admin_password").send_keys @config['security']['pass']
+	sleep(2)
+    @driver.find_element(:name, "commit").click
+	sleep(2)
+	#Get the authentication token when the member logs in the second time
+	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
+	token = auth.attribute("content")
+	puts "The authentication token when the member logged in the second time: #{token} "
+	sleep(2)
+	#Find the Logout button
+	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
+	sleep(2)
+	#logout the second time
+	@driver.find_element(:css, "a.test-nav-logout").click
+	sleep(2)
   end
 
   def element_present?(how, what)

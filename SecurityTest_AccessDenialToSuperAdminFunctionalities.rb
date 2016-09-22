@@ -21,7 +21,27 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
   end
   
   it "test_security_test_access_denial_to_another_community" do
-    #Signin into a community as an admin
+    #Signin as a super admin
+    @driver.get(@base_url + "/admins/sign_in")
+    @driver.find_element(:id, "admin_email").clear
+    @driver.find_element(:id, "admin_email").send_keys @config['security']['super_email']
+	sleep(2)
+    @driver.find_element(:id, "admin_password").clear
+    @driver.find_element(:id, "admin_password").send_keys @config['security']['super_pass']
+	sleep(2)
+    @driver.find_element(:name, "commit").click
+	sleep(2)
+	#Goto accounts page that only super admin has access
+	@driver.get(@base_url + "/accounts")
+	puts "Super admin accessed the accounts page"
+	sleep(2)
+	#Find the Logout button
+	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
+	sleep(2)
+	#Super admin logs out
+	@driver.find_element(:css, "a.test-nav-logout").click
+	sleep(2)
+	#Signin as a client admin
     @driver.get(@base_url + "/admins/sign_in")
     @driver.find_element(:id, "admin_email").clear
     @driver.find_element(:id, "admin_email").send_keys @config['security']['email']
@@ -31,41 +51,17 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	sleep(2)
     @driver.find_element(:name, "commit").click
 	sleep(2)
-	#Find the Logout button
-	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
+	#Goto accounts page that only super admin has access
+	@driver.get(@base_url + "/accounts")
 	sleep(2)
-	if(@driver.find_element(:css, "a.test-nav-logout").displayed?)
-	  @driver.find_element(:css, "a.test-nav-logout").click
-      puts "Logout button appears before logging out"
-	  sleep(2)
-    else 
-      puts "Logout button does not appear before logging out"
-    end
+	@driver.find_element(:xpath, "//title[contains(text(), '404')]")
+	sleep(2)
+	@driver.find_element(:xpath, "//h1[contains(text(), 'Page Not Found')]")
+	sleep(2)
+	puts "The client admin could not access the accounts page which is a super admin functionality. Hence, the test was successful."
 	
-	#sleep(4)
-	#@driver.manage.window.maximize
-	#sleep(2)
-=begin
-	#Confirm that Logout button does not appear
-	case @driver.find_element(:css, "a.test-nav-logout").dispalyed?
-    when true
-	puts "Logout button does not appear. This confirms the session terminates after the logout and the test is successful."
-    when false 
-    puts "Logout button appears. This does not confirm the session terminated correctly and the test failed"
-    end
-=end 	
-
-    #Confirm that Login button appears
-	if(@driver.find_element(:css, "input.btn.btn-login.test-login-button").displayed?)
-	  @driver.find_element(:css, "input.btn.btn-login.test-login-button").click
-      puts "Login button appears. This confirms that session terminated correctly and the test was successful"
-	  sleep(2)
-    else 
-      puts "Login button does not appear. This confirms that the session did not terminate correctly and the test failed."
-    end
-
   end
-
+  
   def element_present?(how, what)
     @driver.find_element(how, what)
     true
@@ -77,7 +73,6 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
     @driver.switch_to.alert
     true
   rescue Selenium::WebDriver::Error::NoAlertPresentError
-  puts "Logout button does not appear. This confirms the session terminates after the logout and the test is successful."
     false
   end
   

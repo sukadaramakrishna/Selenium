@@ -28,8 +28,6 @@ describe "CreateSurvey" do
 	create_premissionsurvey()
 	create_activity()
 	missionlogic()
-	#sleep(60)
-	#check_survey()
 	end
   
 	def login()
@@ -51,7 +49,6 @@ describe "CreateSurvey" do
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Prequal+Premission+Activity"
 	sleep(2)
 	@driver.find_element(:css, "button.btn-default").click
-	
 	end
 	
 	def create_prequalsurvey()
