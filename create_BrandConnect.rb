@@ -58,7 +58,7 @@ describe "CreteBrandConnect" do
 	sleep(1)
     Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_day")).select_by(:text, "7")
 	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1998")
+    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1991")
 	sleep(3)
     @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
 	sleep(2)

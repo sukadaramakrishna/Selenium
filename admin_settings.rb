@@ -227,6 +227,10 @@ describe "AdminSettings" do
 	@driver.execute_script("scroll(0, 0);")
 	sleep(4)
 	
+	#age
+	@driver.find_element(:xpath, "//div[@class='group-box'][2]/div[1]/div[1]/div/div[1]/div/input[@ng-model='value.value']").clear
+	@driver.find_element(:xpath, "//div[@class='group-box'][2]/div[1]/div[1]/div/div[1]/div/input[@ng-model='value.value']").send_keys "13"
+	
 	#Email Preferences
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[15]").click
 	sleep(1)

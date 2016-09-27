@@ -16,18 +16,22 @@ signup:
   base_url_twitter: https://twitter.com
 admin:
   base_url: https://admin.staging.socialmedialink.com
-  email: trip.sprint73@yopmail.com
+  email: trip.sprint74@yopmail.com
   pass: 12345678
 member: 
-  base_url: https://tripsprint73a.staging.socialmedialink.com
+  base_url: https://tripsprint74.staging.socialmedialink.com
   email: sansa.stark@yopmail.com
   pass: 12345678
 security:
   base_url: https://admin.staging.socialmedialink.com
+  member_base_url: https://tripsprint74.staging.socialmedialink.com
   email: mike.ross@yopmail.com
   pass: 12345678
+  member_email: sansa.stark@yopmail.com
+  member_pass: 12345678
   super_email: admin@socialmedialink.com
   super_pass: c@E6$d&HV3n38jnd
+  new_pass: 12345678
   
   
   

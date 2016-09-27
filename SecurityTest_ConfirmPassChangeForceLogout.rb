@@ -21,7 +21,7 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
   end
   
   it "test_security_test_access_denial_to_another_community" do
-    #Signin into a community as an admin
+    #Signin as an admin on Window 1
     @driver.get(@base_url + "/admins/sign_in")
     @driver.find_element(:id, "admin_email").clear
     @driver.find_element(:id, "admin_email").send_keys @config['security']['email']
@@ -31,40 +31,43 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	sleep(2)
     @driver.find_element(:name, "commit").click
 	sleep(2)
-	#Get the authentication token when the member logs in the first time
-	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
-	token = auth.attribute("content")
-	puts "The authentication token when the member logged in the first time: #{token} "
+	puts "Admin signed into Window 1"
+	#Signin as an admin on Window 2
+	@driver_new = Selenium::WebDriver.for :firefox 
+	@driver_new.get(@base_url + "/admins/sign_in")
+	@driver_new.find_element(:id, "admin_email").clear
+    @driver_new.find_element(:id, "admin_email").send_keys @config['security']['email']
 	sleep(2)
-	#Find the Logout button
-	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
+    @driver_new.find_element(:id, "admin_password").clear
+    @driver_new.find_element(:id, "admin_password").send_keys @config['security']['pass']
 	sleep(2)
-	#logout the first time
-	@driver.find_element(:css, "a.test-nav-logout").click
+    @driver_new.find_element(:name, "commit").click
 	sleep(2)
-	#login the second time
-	@driver.get(@base_url + "/admins/sign_in")
-    @driver.find_element(:id, "admin_email").clear
-    @driver.find_element(:id, "admin_email").send_keys @config['security']['email']
+	puts "Admin signed into Window 2"
+	#change password
+	@driver_new.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
 	sleep(2)
-    @driver.find_element(:id, "admin_password").clear
-    @driver.find_element(:id, "admin_password").send_keys @config['security']['pass']
+	@driver_new.find_element(:css, "a.test-nav-profile").click
 	sleep(2)
-    @driver.find_element(:name, "commit").click
+	@driver_new.find_element(:xpath, "//div[@ng-model='admin.password']/div/div/input").click
+	@driver_new.find_element(:xpath, "//div[@ng-model='admin.password']/div/div/input").send_keys @config['security']['new_pass']
 	sleep(2)
-	#Get the authentication token when the member logs in the second time
-	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
-	token = auth.attribute("content")
-	puts "The authentication token when the member logged in the second time: #{token} "
+	@driver_new.find_element(:xpath, "//div[@ng-model='admin.password_confirmation']/div/div/input").click
+	@driver_new.find_element(:xpath, "//div[@ng-model='admin.password_confirmation']/div/div/input").send_keys @config['security']['new_pass']
 	sleep(2)
-	#Find the Logout button
-	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
+	@driver_new.find_element(:xpath, "//button[@ng-click='save()']").click
 	sleep(2)
-	#logout the second time
-	@driver.find_element(:css, "a.test-nav-logout").click
+	puts "Admin changed the password in Window 1"
+	puts "Switch window"
+	#switch to the previous window
+	@driver.get(@base_url + "/dashboard")
 	sleep(2)
+	if(@driver.find_element(:css, "input.btn.btn-login.test-login-button").displayed?)
+	puts "The login button is displayed which implies that the admin in window 1 was forced to log out."
+	sleep(2)
+	end
   end
-
+  
   def element_present?(how, what)
     @driver.find_element(how, what)
     true
@@ -76,7 +79,6 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
     @driver.switch_to.alert
     true
   rescue Selenium::WebDriver::Error::NoAlertPresentError
-  puts "Logout button does not appear. This confirms the session terminates after the logout and the test is successful."
     false
   end
   
