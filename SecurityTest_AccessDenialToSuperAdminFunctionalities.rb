@@ -54,11 +54,14 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	#Goto accounts page that only super admin has access
 	@driver.get(@base_url + "/accounts")
 	sleep(2)
-	@driver.find_element(:xpath, "//title[contains(text(), '404')]")
-	sleep(2)
-	@driver.find_element(:xpath, "//h1[contains(text(), 'Page Not Found')]")
-	sleep(2)
+	#if(@driver.find_element(:xpath, "//title[contains(text(), '404')]").displayed?)
+	if(@driver.find_element(:xpath, "//div/h1[contains(text(),'Page Not Found')]").displayed?)
 	puts "The client admin could not access the accounts page which is a super admin functionality. Hence, the test was successful."
+	else
+	puts "The client admin could access the accounts page which is a super admin functionality. Hence, the test failed."
+	sleep(2)
+	#@driver.find_element(:xpath, "//h1[contains(text(), 'Page Not Found')]")
+	end
 	
   end
   

@@ -1,6 +1,6 @@
 signup:
-  first_name: sansa 											
-  last_name: stark
+  first_name: tyrion 											
+  last_name: lannister
   address1: 483 West, 37th street
   address2: #33
   city: New York City
@@ -15,23 +15,23 @@ signup:
   base_url_facebook: https://facebook.com
   base_url_twitter: https://twitter.com
 admin:
-  base_url: https://admin.staging.socialmedialink.com
-  email: trip.sprint74@yopmail.com
-  pass: 12345678
+  base_url: https://admin-smiley.socialmedialink.com
+  email: trip76@yopmail.com
+  pass: General123$
 member: 
-  base_url: https://tripsprint74.staging.socialmedialink.com
-  email: sansa.stark@yopmail.com
-  pass: 12345678
+  base_url: https://tripsprint76.socialmedialink.com
+  email: tripthi.testmember1@socialmedialink.com
+  pass: general1234
 security:
   base_url: https://admin.staging.socialmedialink.com
-  member_base_url: https://tripsprint74.staging.socialmedialink.com
+  member_base_url: https://tripsprint74.staging.socialmedialink.com/
   email: mike.ross@yopmail.com
-  pass: 12345678
+  pass: General1234$
   member_email: sansa.stark@yopmail.com
   member_pass: 12345678
   super_email: admin@socialmedialink.com
-  super_pass: c@E6$d&HV3n38jnd
-  new_pass: 12345678
+  super_pass: KG=NS_2^?_Ye4&sR
+  new_pass: General123$
   
   
   

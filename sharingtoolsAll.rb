@@ -24,9 +24,9 @@ describe "Sharing Tools" do
   end
   
   it "test_sharing_tools" do
-    create_activity()
-	mission_logic()
-	sleep(240)
+    #create_activity()
+	#mission_logic()
+	#sleep(240)
 	login()
 	update_shippingaddress()
 	connect_FbTwIns()
@@ -137,7 +137,7 @@ describe "Sharing Tools" do
 	@driver.find_element(:css, "textarea[ng-model='activity.upload_photo_facebook.suggested_phrase']").clear
 	@driver.find_element(:css, "textarea[ng-model='activity.upload_photo_facebook.suggested_phrase']").send_keys "Upload photo to facebook suggested Phrase"
 	sleep(2)
-	
+
 	#scroll
 	@driver.execute_script("scroll(0, 750);")
 	sleep(4)
@@ -390,7 +390,7 @@ def connect_FbTwIns()
     @driver.find_element(:id, "allow").click
 	
 	#connect instagram
-    @driver.find_element(:link, "Connect").click
+    @driver.find_element(:css, "a.btn.btn-instagram-connect.btn-md2.btn-block").click
 	sleep(1)
     @driver.find_element(:id, "id_username").clear
     @driver.find_element(:id, "id_username").send_keys @config['signup']['email_instagram']
@@ -411,6 +411,8 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.find_element(:xpath, "//*[contains(text(), 'Accept')]").click
 	sleep(1)
+	@driver.find_element(:css,"input.btn.btn-color.btn-lg.btn-block").click
+	sleep(2)
 	#@driver.find_element(:css, "input.btn-color[type='submit']").click
 	#sleep(2)
 	#@driver.find_element(:css, "input.btn-color[type='submit']").click
@@ -485,21 +487,25 @@ def connect_FbTwIns()
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
 	uploads = @driver.find_elements(:xpath,'//input[@type="file"]')
-	#@driver.find_element(:css, 'input[type="file"]').send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpg") 
-	uploads[0].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
-	sleep(3)
+	#@driver.find_element(:css, 'input[type="file"]').send_keys("C:\\Users\\Tripthi\\Pictures\\art.jpg") 
+	uploads[0].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
+	sleep(2)
+	#post - validation of images
+	#@driver.find_elements(:xpath, "//div[@id='facebook-warning-popup'][@class='modal.fade.in']/div/div[2]/button[1]").click
+	#sleep(2)
 	@driver.find_element(:css, "button.btn-color[sml-fill-text='Upload photo to facebook suggested Phrase']").click
 	sleep(2)
 	textareas[4].find_element(:css,'textarea').send_keys " member text member text member text member text member text member text"
 	sleep(1)
 	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_facebook_cb']").click
+	sleep(2)
 	
 	#Upload to Facebook Page post
 	buttons[5].find_element(:css, 'a').click
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	uploads[1].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[1].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
 	sleep(3)
 	@driver.find_element(:css, "button.btn-color[sml-fill-text='Upload photo to facebook page suggested Phrase']").click
 	sleep(2)
@@ -512,10 +518,10 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	#@driver.find_element(:xpath, '//input[@type=""file""]').send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	#@driver.find_element(:xpath, '//input[@type=""file""]').send_keys("C:\\Users\\Tripthi\\Pictures\\art.jpg")
 	#buttons = @driver.find_elements(:css, "div.sharing-list-buttons")
 	
-	uploads[2].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[2].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
 	sleep(3)
 	textareas[6].find_element(:css,  'textarea').send_keys " member text"
 	sleep(1)
@@ -572,7 +578,7 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	uploads[3].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[3].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
 	sleep(3)
 	
 	#Retail Review Sharing 
@@ -580,7 +586,7 @@ def connect_FbTwIns()
 	sleep(2)
 	@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
 	sleep(1)
-	uploads[4].send_keys("C:\\Users\\Tripthi\\Pictures\\admin.jpe")
+	uploads[4].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
 	sleep(3)
 	@driver.find_element(:css, "label.control-checkbox[for='retail_review_cb']").click
 	

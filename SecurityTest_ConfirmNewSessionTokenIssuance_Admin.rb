@@ -33,8 +33,8 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	sleep(2)
 	#Get the authentication token when the member logs in the first time
 	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
-	token = auth.attribute("content")
-	puts "The authentication token when the admin logged in the first time: #{token} "
+	token1 = auth.attribute("content")
+	puts "The authentication token when the admin logged in the first time: #{token1} "
 	sleep(2)
 	#Find the Logout button
 	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
@@ -54,8 +54,8 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	sleep(2)
 	#Get the authentication token when the member logs in the second time
 	auth = @driver.find_element(:xpath, "//meta[@name='csrf-token']")
-	token = auth.attribute("content")
-	puts "The authentication token when the admin logged in the second time: #{token} "
+	token2 = auth.attribute("content")
+	puts "The authentication token when the admin logged in the second time: #{token2} "
 	sleep(2)
 	#Find the Logout button
 	@driver.find_element(:css, "button.topbar-menu-toggle.test-nav-user").click
@@ -63,6 +63,11 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	#logout the second time
 	@driver.find_element(:css, "a.test-nav-logout").click
 	sleep(2)
+	if(token1==token2)
+	puts "The tokens are same. Hence, the test failed."
+	else
+	puts "The tokens are different. Hence, the test passed."
+	end
   end
 
   def element_present?(how, what)

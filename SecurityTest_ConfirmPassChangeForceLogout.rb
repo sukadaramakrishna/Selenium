@@ -65,6 +65,8 @@ describe "SecurityTestAccessDenialToAnotherCommunity" do
 	if(@driver.find_element(:css, "input.btn.btn-login.test-login-button").displayed?)
 	puts "The login button is displayed which implies that the admin in window 1 was forced to log out."
 	sleep(2)
+	else 
+	puts "The login button is not displayed which implies that the admin in window 1 was not forced to log out."
 	end
   end
   
