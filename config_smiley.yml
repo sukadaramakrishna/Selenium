@@ -1,8 +1,14 @@
 signup:
   first_name: tyrion 											
   last_name: lannister
+  first_name_CA: simona13	
+  last_name_CA: baker
   address1: 483 West, 37th street
   address2: #33
+  address1_CA: 1010 Easy St
+  city_CA: Ottava
+  state_CA: Ontario
+  zip_CA: K1A 0B1
   city: New York City
   state: New York
   zip: 10018
@@ -20,7 +26,7 @@ admin:
   pass: General123$
 member: 
   base_url: https://tripsprint76.socialmedialink.com
-  email: tripthi.testmember1@socialmedialink.com
+  email: tyrion.lannister@yopmail.com
   pass: general1234
 security:
   base_url: https://admin.staging.socialmedialink.com
