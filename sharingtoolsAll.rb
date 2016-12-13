@@ -264,7 +264,7 @@ describe "Sharing Tools" do
 	@driver.execute_script("scroll(0, 2800);")
 	sleep(4)
 	@driver.find_element(:css, "textarea[placeholder='Bazaar Voice Client Token']").clear
-	@driver.find_element(:css, "textarea[placeholder='Bazaar Voice Client Token']").send_keys "caEg1TBXTKhIcmnk623URKYPzAYlrtoLG2LkHaqD4neTk"
+	@driver.find_element(:css, "textarea[placeholder='Bazaar Voice Client Token']").send_keys "ca8YG3gyZph6ZaZxUxm8ep2pD9ZDJE3jneBRs89WwnZiA"
 	sleep(2)
 	@driver.find_element(:css, "textarea[placeholder='Bazaar Voice Encoding Key']").clear
 	@driver.find_element(:css, "textarea[placeholder='Bazaar Voice Encoding Key']").send_keys "6VgQ5XhdqOaVnj2FlvjqjMTxc"
