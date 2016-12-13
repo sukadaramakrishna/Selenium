@@ -1,10 +1,12 @@
 signup:
-  first_name: tyrion 											
-  last_name: lannister
-  first_name_CA: simona13	
+  first_name: arya 											
+  last_name: stark
+  first_name_CA: simona15	
   last_name_CA: baker
+  validate_first: sean
+  validate_last: watson
   address1: 483 West, 37th street
-  address2: #33
+  address2: 33
   address1_CA: 1010 Easy St
   city_CA: Ottava
   state_CA: Ontario
@@ -21,13 +23,16 @@ signup:
   base_url_facebook: https://facebook.com
   base_url_twitter: https://twitter.com
 admin:
-  base_url: https://admin-smiley.socialmedialink.com
-  email: trip76@yopmail.com
+  base_url: https://admin.staging.socialmedialink.com
+  email: tripsprint79@yopmail.com
   pass: General123$
 member: 
-  base_url: https://tripsprint76.socialmedialink.com
-  email: tyrion.lannister@yopmail.com
-  pass: general1234
+  base_url: https://tripsprint79.staging.socialmedialink.com
+  resend_confirm_url: https://tripsprint79.staging.socialmedialink.com/members/confirmation/new
+  resend_confirm: sophie.blake@yopmail.com
+  email: arya.stark@yopmail.com
+  pass: 87654321
+  change_pass: 12345678
 security:
   base_url: https://admin.staging.socialmedialink.com
   member_base_url: https://tripsprint74.staging.socialmedialink.com/
