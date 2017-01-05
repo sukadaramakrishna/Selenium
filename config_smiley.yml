@@ -30,8 +30,8 @@ member:
   base_url: https://tripsprint79.staging.socialmedialink.com
   resend_confirm_url: https://tripsprint79.staging.socialmedialink.com/members/confirmation/new
   resend_confirm: sophie.blake@yopmail.com
-  email: arya.stark@yopmail.com
-  pass: 87654321
+  email: simona15.baker@yopmail.com
+  pass: 12345678
   change_pass: 12345678
 security:
   base_url: https://admin.staging.socialmedialink.com
