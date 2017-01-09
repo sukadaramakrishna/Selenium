@@ -1,7 +1,7 @@
 signup:
-  first_name: arya 											
-  last_name: stark
-  first_name_CA: simona15	
+  first_name: tyrion											
+  last_name: lannister
+  first_name_CA: simona16	
   last_name_CA: baker
   validate_first: sean
   validate_last: watson
@@ -14,9 +14,9 @@ signup:
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthi.shetty@socialmedialink.com
-  pass_facebook: general1234
-  email_twitter: tripthi.testmember20@socialmedialink.com	
+  email_facebook: tripthishetty20@gmail.com
+  pass_facebook: Abcd123$
+  email_twitter: sukada.testmember8@socialmedialink.com
   pass_twitter: general1234
   email_instagram: tripthi.shetty
   pass_instagram: abcd1234
@@ -30,7 +30,7 @@ member:
   base_url: https://tripsprint79.staging.socialmedialink.com
   resend_confirm_url: https://tripsprint79.staging.socialmedialink.com/members/confirmation/new
   resend_confirm: sophie.blake@yopmail.com
-  email: simona15.baker@yopmail.com
+  email: tyrion.lannister@yopmail.com
   pass: 12345678
   change_pass: 12345678
 security:

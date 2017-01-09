@@ -22,48 +22,53 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 
-			caps["name"] = "Member Signin Via Email"
+			caps["name"] = "Member Signin Via Facebook"
 			caps["build"] = "1.0"
-			caps["browser_api_name"] = "MblSafari10.0"
-			caps["os_api_name"] = "iPhone7Plus-iOS10sim"
-			caps["screen_resolution"] = "1080x1920"
+			caps["browser_api_name"] = "FF46x64"
+            caps["os_api_name"] = "Win8.1"
+			caps["screen_resolution"] = "1920x1080"
 			caps["record_video"] = "true"
 			caps["record_network"] = "true"
 
-			driver = Selenium::WebDriver.for(:remote,
+			
+			@driver = Selenium::WebDriver.for(:remote,
 			:url => "http://#{username}:#{authkey}@hub.crossbrowsertesting.com:80/wd/hub",
 			:desired_capabilities => caps)
 
-			session_id = driver.session_id
+			session_id = @driver.session_id
 
 			score = "pass"
 			cbt_api = CBT_API.new
 			# maximize the window - DESKTOPS ONLY
-			#driver.manage.window.maximize
+			@driver.manage.window.maximize
 
 			puts "Loading URL"
-			driver.navigate.to(@base_url + "/home")
+			@driver.navigate.to(@base_url + "/home")
 			#@driver.get(@base_url + "/home")
-			# start login process by entering username
-			puts "Entering username"
-			driver.find_element(:id, "member_email").send_keys @config['member']['email']
-
-			# then we'll enter the password
-			puts "Entering password"
-			driver.find_element(:id, "member_password").send_keys @config['member']['pass']
-
-			# then we'll click the login button
-			puts "Logging in"
-			driver.find_element(:name, "commit").click
-
+			
+			puts "Connecting via Facebook"
+			sleep(2)
+	@driver.find_element(:css, "a.login-connect-facebook").click
+    sleep(2)
+	puts "Entering FB email"
+    @driver.find_element(:id, "email").clear
+    @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']
+	puts "Entering FB password"
+	@driver.find_element(:id, "pass").clear
+	sleep(2)
+    @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
+	puts "Submitting"
+	@driver.find_element(:id, "loginbutton").click
+	 sleep(4)
+=begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
 			wait.until {
-				driver.find_element(:css, "a.btn.btn-color.btn-sidebar-profile")
+				@driver.find_element(:css, "a.btn.btn-color.btn-sidebar-profile")
 			}
-
+=end
 			# if we passed the login, then we should see some welcomeText
-			welcomeText = driver.find_element(:xpath, "//div[@class='content-offer js-content-offer']/h1").text
+			welcomeText = @driver.find_element(:xpath, "//div[@class='content-offer']/h1").text
 			assert_equal("Offers for You", welcomeText)
 
 			puts "Taking Snapshot"
@@ -74,7 +79,7 @@ class LoginFormTest < Test::Unit::TestCase
 		    puts ("#{ex.class}: #{ex.message}")
 		    cbt_api.setScore(session_id, "fail")
 		ensure     
-		    driver.quit
+		    @driver.quit
 		end
 	end
 end
