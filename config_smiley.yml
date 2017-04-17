@@ -1,10 +1,10 @@
 signup:
-  first_name: tyrion											
-  last_name: lannister
+  first_name: sansa										
+  last_name: stark
   first_name_CA: simona16	
   last_name_CA: baker
-  validate_first: sean
-  validate_last: watson
+  validate_first: sansa4
+  validate_last: stark
   address1: 483 West, 37th street
   address2: 33
   address1_CA: 1010 Easy St
@@ -14,8 +14,8 @@ signup:
   city: New York City
   state: New York
   zip: 10018
-  email_facebook: tripthishetty20@gmail.com
-  pass_facebook: Abcd123$
+  email_facebook: tripthi.shetty@socialmedialink.com
+  pass_facebook: Qwerty$
   email_twitter: sukada.testmember8@socialmedialink.com
   pass_twitter: general1234
   email_instagram: tripthi.shetty
@@ -23,16 +23,16 @@ signup:
   base_url_facebook: https://facebook.com
   base_url_twitter: https://twitter.com
 admin:
-  base_url: https://admin.staging.socialmedialink.com
-  email: tripsprint79@yopmail.com
+  base_url: https://admin-smiley.socialmedialink.com
+  email: tripsprint83smiley@yopmail.com
   pass: General123$
 member: 
-  base_url: https://tripsprint79.staging.socialmedialink.com
-  resend_confirm_url: https://tripsprint79.staging.socialmedialink.com/members/confirmation/new
-  resend_confirm: sophie.blake@yopmail.com
-  email: tyrion.lannister@yopmail.com
-  pass: 12345678
-  change_pass: 12345678
+  base_url: https://tripsprint83smiley.socialmedialink.com/
+  resend_confirm_url: https://tripsprint81.dev.socialmedialink.com/members/confirmation/new
+  resend_confirm: sophie2.blake4@yopmail.com
+  email: sansa.stark@yopmail.com
+  pass: 87654321
+  change_pass: 87654321
 security:
   base_url: https://admin.staging.socialmedialink.com
   member_base_url: https://tripsprint74.staging.socialmedialink.com/

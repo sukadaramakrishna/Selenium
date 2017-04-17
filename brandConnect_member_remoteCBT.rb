@@ -23,7 +23,7 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 
-			caps["name"] = "Create Brand connect"
+			caps["name"] = "Create Brand connect and comment as a member"
 			caps["build"] = "1.0"
 			caps["browser_api_name"] = "FF46x64"
             caps["os_api_name"] = "Win8.1"
@@ -63,38 +63,6 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:name, "commit").click
 	sleep(5)
 
-	#Do this if admin is logging to member side for the first time 
-	puts "Admin logging into member side for the first time"
-	puts "Entering details"
-	@driver.find_element(:id, "member_first_name").clear
-    @driver.find_element(:id, "member_first_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_last_name").clear
-    @driver.find_element(:id, "member_last_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_zip_code").clear
-    @driver.find_element(:id, "member_zip_code").send_keys "10018"
-	sleep(2)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_month")).select_by(:text, "February")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_day")).select_by(:text, "7")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1991")
-	sleep(3)
-    @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
-	sleep(2)
-	puts "Logging in"
-    @driver.find_element(:name, "commit").click
-	sleep(2)
-	
-	#Click on Dashboard button and redirect to the dashboard
-	@driver.find_element(:xpath, "//a[@class='btn btn-color btn-lg']").click
-	sleep(3)
-	
-	#close tutorial
-	#@driver.find_element(:xpath, "(//div[@class='tour-navigation']/div[1]/button)[1]").click
-	#@driver.find_element(:link, "Close").click
-	
 	#Creating topic
 	puts "Creating topic"
 	@driver.find_element(:link, "Brand Connect").click
@@ -122,32 +90,50 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(2)
 	puts "Entering discussion title"
     @driver.find_element(:id, "discussion_title").clear
-    @driver.find_element(:id, "discussion_title").send_keys "Discussion lengthy Discussion lengthyDiscussion lengthyDiscussion lengthy Discussion lengthyDiscussion lengthyDiscussion lengthyDiscussion lengthyDiscussion lengthy"
+    @driver.find_element(:id, "discussion_title").send_keys "Discussion created for member to comment"
     sleep(2)
 	puts "Entering message for the title"
 	@driver.find_element(:id, "discussion_first_comment_attributes_text").clear
-    @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Message lengthy Message lengthyMessage lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy."
+    @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Discussion created for member to comment"
     sleep(2)
 	puts "Saving discussion .."
 	@driver.find_element(:name, "commit").click
     puts "Discussion saved"
 	
-	#Comment as an admin
-	puts "Comment as an admin"
-    @driver.find_element(:xpath, "//textarea").clear
+	#Login as a member
+	puts "Logging in as a member"
+	@driver.find_element(:css, "a.header-logout").click
+	sleep(1)
+	@driver.navigate.to(@config['member']['base_url'] + "/home")
+	#login
+    @driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
+    @driver.find_element(:id, "member_password").clear
+    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	@driver.manage.window.maximize
+	sleep(2)
+	puts "Logged in as a member"
+	
+	#confirmMemberCannotCreateTopic
+	puts "Confirming that member cannot create a Topic"
+	@driver.find_element(:link, "Brand Connect").click
+	sleep(1)
+	@driver.save_screenshot "Screenshots/brandconnectconfirmMemberCannotCreateTopic.png"
+	sleep(1)
+	puts "Create button does not exist. Hence, a member cannot create a Topic."
+	
+	#commentMember
+	@driver.find_element(:xpath, "//div[@class='bconnect-topics-item']/ul/li/h4/a[@title='Discussion created for member to comment']").click
+	sleep(1)
+	@driver.find_element(:xpath, "//textarea").clear
     @driver.find_element(:xpath, "//textarea").send_keys "comment 1"
 	sleep(2)
-	#@driver.find_element(:css, "div.bconnect-new-post-attach").click
-	#@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
-	sleep(1)
-	e = @driver.find_element(:css, "input[type='file']")
-	e.send_keys("C:\\Users\\Tripthi\\Pictures\\Brandconnect.jpe")
-	sleep(5)
-	puts "Sumitting the comment"
 	@driver.find_element(:css, "a.btn.btn-color.btn-md.bconnect-new-post-submit").click
 	sleep(2)
-	puts "Comment submitted"
-	sleep(2)
+	puts "Member commented on the discussion"
+	puts "Test passed"
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)

@@ -27,7 +27,7 @@ describe "Todelete" do
   end
  
 	def likeRetweetTw()
-	#Redirect to Facebook
+	#Redirect to Twitter
 	@driver.get("https://twitter.com/")
 	sleep(3)
 	@driver.find_element(:xpath, "//div[@class='StreamsHero-buttonContainer']/a[3]").click

@@ -107,6 +107,7 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:link, "Mission Hubs").click
 	#Creating a mission hub
 	puts "Creating a new mission hub"
+	sleep(4)
     @driver.find_element(:link, "New Mission Hub").click
     sleep(4)
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
@@ -178,7 +179,7 @@ class LoginFormTest < Test::Unit::TestCase
 	section[0].find_element(:css, "a").click
 	puts "Adding start and end date"
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	@driver.find_element(:xpath, "//td[@class='active day']/preceding-sibling::td[@class='day'][1]").click
 	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	puts "Adding Male group"
 	@driver.find_element(:css, "button.mlogic-add-group").click
@@ -214,7 +215,7 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:css,"li.mlogic-list-item.test-hub-logic-item-1.test-hub-logic-item-activity")
 	puts "Adding start and end date"
 	@driver.find_element(:id, "date-start").click
-	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	@driver.find_element(:xpath, "//td[@class='active day']/preceding-sibling::td[@class='day'][1]").click
 	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
 	puts "Adding Female group"
 	@driver.find_element(:css, "button.mlogic-add-group").click
@@ -230,11 +231,11 @@ class LoginFormTest < Test::Unit::TestCase
 	puts "Adding spot limit"
 	@driver.find_element(:css, "input.ng-pristine[ng-model='rule.distribution_limit']").send_keys "1"
 	@driver.find_element(:css, "label.switcher.ng-scope").click
-	sleep(1)
+	sleep(3)
 	
 	puts "Saving mission logic for the second activity"
 	@driver.find_element(:css, "button.test-hub-logic-save").click
-	
+	sleep(2)
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
@@ -244,7 +245,7 @@ class LoginFormTest < Test::Unit::TestCase
 =end
 			# if we passed the login, then we should see some welcomeText
 			welcomeText = @driver.find_element(:xpath, "//div[@class='mlogic-title ng-binding']").text
-			assert_equal("Sharing Tools Activity", welcomeText)
+			assert_equal("Activity for Males", welcomeText)
 
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)

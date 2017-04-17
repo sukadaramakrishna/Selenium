@@ -292,8 +292,8 @@ class LoginFormTest < Test::Unit::TestCase
 	#@driver.find_element(:css, "textarea#template_name").clear
 	#@driver.find_element(:css, "textarea#template_name").send_keys "smiley-email-sharing"
 	sleep(1)
-	@driver.find_element(:css, "textarea#custom_landing_page_url").clear
-	@driver.find_element(:css, "textarea#custom_landing_page_url").send_keys "http://tripsprint39-staging.socialmedialink.com/promo/52b"
+	#@driver.find_element(:css, "textarea#custom_landing_page_url").clear
+	#@driver.find_element(:css, "textarea#custom_landing_page_url").send_keys "http://83prodtest.socialmedialink.com/invite/"
 	sleep(2)
 	
 	#scroll
@@ -348,20 +348,20 @@ class LoginFormTest < Test::Unit::TestCase
 
 	#Mission logic section
 	@driver.find_element(:link, "Sharing Tools").click
-	sleep(1)
+	sleep(3)
 	puts "Redirecting to mission logic page"
     @driver.find_element(:link, "Mission Logic").click
-	sleep(1)
+	sleep(3)
     @driver.find_element(:css, "a.mlogic-link.test-hub-logic-item-view.ng-scope").click
 	puts "Setting up the start and end date"
 	@driver.find_element(:id, "date-start").click
 	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
-	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	@driver.find_element(:xpath, "//td[@class='active day']/preceding-sibling::td[@class='day'][1]").click
 	puts "Adding group"
 	@driver.find_element(:css, "button.mlogic-add-group").click
 	#@driver.find_element(:css, "label.control-checkbox-primary[for='checkbox__2575']").click
 	@driver.find_element(:xpath, "//span[text()='All Members']").click
-	sleep(1)
+	sleep(2)
 	puts "Saving group"
 	@driver.find_element(:css, "button.test-hub-logic-item-group-save").click
 	sleep(1)

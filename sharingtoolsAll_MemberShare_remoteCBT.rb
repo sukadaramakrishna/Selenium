@@ -60,10 +60,9 @@ class LoginFormTest < Test::Unit::TestCase
 			# then we'll click the login button
 			puts "Logging in"
 			@driver.find_element(:name, "commit").click
-			
+			sleep(4)
 			#Accept activity
 			puts "Accept an activity"
-			sleep(4)
 	@driver.find_element(:link, "Dashboard").click
 	sleep(2)
 	@driver.find_element(:link, "Sharing Tools Activity").click
@@ -142,6 +141,21 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_facebook_cb']").click
 	sleep(2)
 	
+	#Upload to Facebook Page post
+	puts "Member shares via Upload to Facebook page"
+	buttons[5].find_element(:css, 'a').click
+	sleep(2)
+	#@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
+	sleep(1)
+	uploads[1].send_keys("C:\\Users\\Tripthi\\Pictures\\snuggleFbPosts_09_14_hllwn.jpg")
+	sleep(3)
+	@driver.find_element(:css, "button.btn-color[sml-fill-text='Upload photo to facebook page suggested Phrase']").click
+	sleep(2)
+	textareas[5].find_element(:css,'textarea').send_keys " member text member text member text member text member text member text"
+	sleep(1)
+	@driver.find_element(:css, "label.control-checkbox[for='upload_photo_fb_page_cb']").click
+	sleep(2)
+
 	#upload photo to twitter post
 	puts "Member shares via Upload to Twitter"
 	buttons[6].find_element(:css, 'a').click
@@ -227,7 +241,7 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(1)
 	#@driver.find_element(:css, "label.control-checkbox[for='email_group_invite_cb']").click
 	sleep(1)
-	
+
 	#Bazaar Voice Sharing tool
 	puts "Member shares via Bazaar Voice"
 	buttons[14].find_element(:css, 'a').click
@@ -240,6 +254,7 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:xpath, "//div[@sml-rating='service.bazaarvoice.bazaarvoice_rating']/img[3]").click
 	sleep(2)
 	#@driver.find_element(:css,"label.control-checkbox[for='bazaarvoice_cb']").click
+
 	sleep(2)
 	
 	#submit

@@ -22,11 +22,11 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 			#caps['selenium-version'] = "2.53.4"
-			caps["name"] = "ShippingAddress update and connect to Socialmedia"
+			caps["name"] = "ShippingAddress update CA"
 			caps["build"] = "1.0"
-			caps["browser_api_name"] = "Chrome56x64"
-            caps["os_api_name"] = "Win7x64-C1"
-			caps["screen_resolution"] = "1024x768"
+			caps["browser_api_name"] = "FF46x64"
+            caps["os_api_name"] = "Win8.1"
+			caps["screen_resolution"] = "1920x1080"
 			caps["record_video"] = "true"
 			caps["record_network"] = "true"
 
@@ -60,75 +60,34 @@ class LoginFormTest < Test::Unit::TestCase
 			# then we'll click the login button
 			puts "Logging in"
 			@driver.find_element(:name, "commit").click
-			sleep(3)
+			
 			#Update shiping address
 			puts "Updating shipping address.."
 			@driver.find_element(:xpath, "//span[@class='header-user-name']").click
-	sleep(2)
+	sleep(1)
 
     @driver.find_element(:link, "Shipping Address").click
 	sleep(1)
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "Canada")
+	sleep(1)
     @driver.find_element(:id, "member_address_2").clear
-    @driver.find_element(:id, "member_address_2").send_keys @config['signup']['address1']
+    @driver.find_element(:id, "member_address_2").send_keys @config['signup']['address1_CA']
 	sleep(1)
     @driver.find_element(:id, "member_address_1").clear
     @driver.find_element(:id, "member_address_1").send_keys @config['signup']['address2']
 	sleep(1)
-	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_state")).select_by(:text, @config['signup']['state'])
+	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_state")).select_by(:text, @config['signup']['state_CA'])
 	sleep(1)
     @driver.find_element(:id, "member_city").clear
-    @driver.find_element(:id, "member_city").send_keys @config['signup']['city']
+    @driver.find_element(:id, "member_city").send_keys @config['signup']['city_CA']
 	sleep(1)
     @driver.find_element(:id, "member_zip_code").clear
-    @driver.find_element(:id, "member_zip_code").send_keys @config['signup']['zip']
-	sleep(1)
-	Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "member_country")).select_by(:text, "United States")
+    @driver.find_element(:id, "member_zip_code").send_keys @config['signup']['zip_CA']
 	sleep(1)
     @driver.find_element(:xpath, "//input[@value='Save Shipping Address']").click
 	sleep(2)
 	puts "shipping address updated"
-	sleep(3)	
-	#Connect to social media
-	puts "Connecting to social media channels"
-	@driver.find_element(:css, "span.header-user-name").click
-
-	#connect facebook
-    @driver.find_element(:link, "Connect").click
-	sleep(1)
-	@driver.find_element(:id, "email").clear
-    @driver.find_element(:id, "email").send_keys @config['signup']['email_facebook']
-    sleep(2)
-    @driver.find_element(:id, "pass").clear
-    @driver.find_element(:id, "pass").send_keys @config['signup']['pass_facebook']
-    sleep(2)
-    @driver.find_element(:id, "loginbutton").click
-	puts "Connected to Facebook"
-	sleep(2)
-	#connect twitter
-    @driver.find_element(:link, "Connect").click
-	sleep(1)
-    @driver.find_element(:id, "username_or_email").clear
-    @driver.find_element(:id, "username_or_email").send_keys @config['signup']['email_twitter']
-	sleep(1)
-	@driver.find_element(:id, "password").clear
-    @driver.find_element(:id, "password").send_keys @config['signup']['pass_twitter']
-	sleep(1)
-    @driver.find_element(:id, "allow").click
-	puts "Connected to Twitter"
-	sleep(3)
-	#connect instagram
-    @driver.find_element(:css, "a.btn.btn-instagram-connect.btn-md2.btn-block").click
-	sleep(1)
-    @driver.find_element(:id, "id_username").clear
-    @driver.find_element(:id, "id_username").send_keys @config['signup']['email_instagram']
-	sleep(1)
-    @driver.find_element(:id, "id_password").clear
-    @driver.find_element(:id, "id_password").send_keys @config['signup']['pass_instagram']
-	sleep(1)
-    @driver.find_element(:css, "input.button-green").click
-	sleep(2)
-	puts "Connected to Instagram"
-	
+			
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)

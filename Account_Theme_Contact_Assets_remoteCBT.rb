@@ -128,10 +128,12 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:name, "commit").click
 	puts "Saving contact information.."
 	puts "Contact info saved"
+	sleep(4)
 	#Click Assets
 	#Terms and conditions
 	puts "Click assets settings"
     @driver.find_element(:link, "Assets").click
+	sleep(2)
     @driver.find_element(:id, "policy_name").clear
     @driver.find_element(:id, "policy_name").send_keys "Terms and condition name"
     @driver.find_element(:id, "policy_text").clear
@@ -174,6 +176,7 @@ class LoginFormTest < Test::Unit::TestCase
 	puts "About us details saved"
 	puts "Redirected to Home page"
     @driver.find_element(:link, "Home Page").click
+	sleep(4)
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)

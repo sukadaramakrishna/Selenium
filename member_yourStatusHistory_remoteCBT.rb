@@ -22,50 +22,62 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 
-			caps["name"] = "Member Signin Via Email"
+			caps["name"] = "Verify member Status and History"
 			caps["build"] = "1.0"
 			caps["browser_api_name"] = "FF46x64"
-			caps["os_api_name"] = "Win8.1"
+            caps["os_api_name"] = "Win8.1"
 			caps["screen_resolution"] = "1920x1080"
 			caps["record_video"] = "true"
 			caps["record_network"] = "true"
-
-			driver = Selenium::WebDriver.for(:remote,
+			
+			@driver = Selenium::WebDriver.for(:remote,
 			:url => "http://#{username}:#{authkey}@hub.crossbrowsertesting.com:80/wd/hub",
 			:desired_capabilities => caps)
 
-			session_id = driver.session_id
+			session_id = @driver.session_id
 
+			@driver.file_detector = lambda do |args|
+			# args => ["/path/to/file"]
+			str = args.first.to_s    
+			str if File.exist?(str)
+			end
+			
 			score = "pass"
 			cbt_api = CBT_API.new
 			# maximize the window - DESKTOPS ONLY
-			#driver.manage.window.maximize
+			@driver.manage.window.maximize
 
 			puts "Loading URL"
-			driver.navigate.to(@base_url + "/home")
+			@driver.navigate.to(@base_url + "/home")
 			#@driver.get(@base_url + "/home")
-			# start login process by entering username
-			puts "Entering username"
-			driver.find_element(:id, "member_email").send_keys @config['member']['email']
+			
+			puts "Entering member email"
+			@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['admin']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['admin']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
+	sleep(5)
 
-			# then we'll enter the password
-			puts "Entering password"
-			driver.find_element(:id, "member_password").send_keys @config['member']['pass']
-
-			# then we'll click the login button
-			puts "Logging in"
-			driver.find_element(:name, "commit").click
-
+	@driver.find_element(:css, "span.header-user-name").click
+    sleep(4)
+	@driver.save_screenshot "Screenshots/member_history.png"
+	sleep(1)
+	puts "Screen shot of member history section taken"
+	puts "The test passed"
+=begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
 			wait.until {
-				driver.find_element(:css, "a.btn.btn-color.btn-sidebar-profile")
+				@driver.find_element(:css, "a.btn.btn-color.btn-sidebar-profile")
 			}
-
+=end
 			# if we passed the login, then we should see some welcomeText
-			welcomeText = driver.find_element(:xpath, "//div[@class='content-offer js-content-offer']/h1").text
-			assert_equal("Offers for You", welcomeText)
-
+			#welcomeText = @driver.find_element(:xpath, "//div[@class='bconnect-topic-bar']").text
+			#assert_equal(" discussion", welcomeText)
+		assert @driver.find_element(:xpath, "//div[@class='profile-register-title']/h1").text.include?('Profile')
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)
 			cbt_api.setScore(session_id, "pass")
@@ -74,7 +86,7 @@ class LoginFormTest < Test::Unit::TestCase
 		    puts ("#{ex.class}: #{ex.message}")
 		    cbt_api.setScore(session_id, "fail")
 		ensure     
-		    driver.quit
+		    @driver.quit
 		end
 	end
 end

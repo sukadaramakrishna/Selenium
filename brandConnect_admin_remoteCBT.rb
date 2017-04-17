@@ -23,7 +23,7 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 
-			caps["name"] = "Create Brand connect"
+			caps["name"] = "Create Brand connect Edit and test sorting of comments"
 			caps["build"] = "1.0"
 			caps["browser_api_name"] = "FF46x64"
             caps["os_api_name"] = "Win8.1"
@@ -63,38 +63,6 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:name, "commit").click
 	sleep(5)
 
-	#Do this if admin is logging to member side for the first time 
-	puts "Admin logging into member side for the first time"
-	puts "Entering details"
-	@driver.find_element(:id, "member_first_name").clear
-    @driver.find_element(:id, "member_first_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_last_name").clear
-    @driver.find_element(:id, "member_last_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_zip_code").clear
-    @driver.find_element(:id, "member_zip_code").send_keys "10018"
-	sleep(2)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_month")).select_by(:text, "February")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_day")).select_by(:text, "7")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1991")
-	sleep(3)
-    @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
-	sleep(2)
-	puts "Logging in"
-    @driver.find_element(:name, "commit").click
-	sleep(2)
-	
-	#Click on Dashboard button and redirect to the dashboard
-	@driver.find_element(:xpath, "//a[@class='btn btn-color btn-lg']").click
-	sleep(3)
-	
-	#close tutorial
-	#@driver.find_element(:xpath, "(//div[@class='tour-navigation']/div[1]/button)[1]").click
-	#@driver.find_element(:link, "Close").click
-	
 	#Creating topic
 	puts "Creating topic"
 	@driver.find_element(:link, "Brand Connect").click
@@ -132,22 +100,57 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:name, "commit").click
     puts "Discussion saved"
 	
-	#Comment as an admin
-	puts "Comment as an admin"
-    @driver.find_element(:xpath, "//textarea").clear
-    @driver.find_element(:xpath, "//textarea").send_keys "comment 1"
+	#Edit Brand connect Discussion
 	sleep(2)
-	#@driver.find_element(:css, "div.bconnect-new-post-attach").click
-	#@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
+	puts "Editing Brand connect discussion"
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
 	sleep(1)
-	e = @driver.find_element(:css, "input[type='file']")
-	e.send_keys("C:\\Users\\Tripthi\\Pictures\\Brandconnect.jpe")
-	sleep(5)
-	puts "Sumitting the comment"
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[1]").click
+	sleep(1)
+	@driver.find_element(:id, "discussion_title").clear
+    @driver.find_element(:id, "discussion_title").send_keys "Discussion 1 just edited"
+    sleep(2)
+	@driver.find_element(:id, "discussion_first_comment_attributes_text").clear
+    @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Message edited"
+    sleep(2)
+	@driver.find_element(:name, "commit").click
+	@driver.save_screenshot "Screenshots/brandconnectDicussion_edited.png"
+	puts "Brand connect discussion edited successfully."
+	
+	#Edit Brand connect Topic
+	sleep(2)
+	puts "Editing Brand connect topic"
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/h1/a[2]").click
+	sleep(1)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
+	sleep(1)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[1]").click
+	sleep(1)
+	@driver.find_element(:id, "topic_title").clear
+    @driver.find_element(:id, "topic_title").send_keys "Title 1 just edited"
+	sleep(2)
+    @driver.find_element(:id, "topic_title").clear
+    @driver.find_element(:id, "topic_title").send_keys "Title 1 just edited"
+    sleep(2)
+	@driver.find_element(:name, "commit").click
+	@driver.save_screenshot "Screenshots/brandconnectTopic_edited.png" 
+    puts "Brandconnect topic edited successfully."
+	
+	#Test sorting feature new to old
+	puts "Testing if the comments are sorted new to old"
+	@driver.find_element(:css, "a.bconnect-discussions-title").click
+	sleep(2)
+	puts "Adding comments .."
+	(0..31).each do |i|
+	@driver.find_element(:xpath, "//textarea").clear
+    @driver.find_element(:xpath, "//textarea").send_keys "comment #{i}"
+	sleep(1)
 	@driver.find_element(:css, "a.btn.btn-color.btn-md.bconnect-new-post-submit").click
 	sleep(2)
-	puts "Comment submitted"
-	sleep(2)
+	end
+	@driver.save_screenshot "Screenshots/brandconnectNew2OldComments.png" 
+	puts "added 31 comments"
+	puts "Test passed"
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)

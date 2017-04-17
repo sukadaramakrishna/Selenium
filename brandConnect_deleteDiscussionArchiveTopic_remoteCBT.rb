@@ -23,7 +23,7 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 
-			caps["name"] = "Create Brand connect"
+			caps["name"] = "Create Brand connect and delete discussion and archive topic"
 			caps["build"] = "1.0"
 			caps["browser_api_name"] = "FF46x64"
             caps["os_api_name"] = "Win8.1"
@@ -63,38 +63,6 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:name, "commit").click
 	sleep(5)
 
-	#Do this if admin is logging to member side for the first time 
-	puts "Admin logging into member side for the first time"
-	puts "Entering details"
-	@driver.find_element(:id, "member_first_name").clear
-    @driver.find_element(:id, "member_first_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_last_name").clear
-    @driver.find_element(:id, "member_last_name").send_keys "admin"
-	sleep(2)
-    @driver.find_element(:id, "member_zip_code").clear
-    @driver.find_element(:id, "member_zip_code").send_keys "10018"
-	sleep(2)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_month")).select_by(:text, "February")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_day")).select_by(:text, "7")
-	sleep(1)
-    Selenium::WebDriver::Support::Select.new(@driver.find_element(:id, "date_year")).select_by(:text, "1991")
-	sleep(3)
-    @driver.find_element(:xpath, "(//label[@class='control-radio'])[1]").click
-	sleep(2)
-	puts "Logging in"
-    @driver.find_element(:name, "commit").click
-	sleep(2)
-	
-	#Click on Dashboard button and redirect to the dashboard
-	@driver.find_element(:xpath, "//a[@class='btn btn-color btn-lg']").click
-	sleep(3)
-	
-	#close tutorial
-	#@driver.find_element(:xpath, "(//div[@class='tour-navigation']/div[1]/button)[1]").click
-	#@driver.find_element(:link, "Close").click
-	
 	#Creating topic
 	puts "Creating topic"
 	@driver.find_element(:link, "Brand Connect").click
@@ -107,10 +75,10 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(5)
 	puts "Entering topic title"
     @driver.find_element(:id, "topic_title").clear
-    @driver.find_element(:id, "topic_title").send_keys "Title lengthy Title Title"
+    @driver.find_element(:id, "topic_title").send_keys "Test Close Delete Archive topic"
 	sleep(2)
     @driver.find_element(:id, "topic_title").clear
-    @driver.find_element(:id, "topic_title").send_keys "Title lengthy Title lengthy Title lengthy Title lengthy Title lengthyTitle lengthy Title lengthy Title lengthy Title lengthy Title lengthy Title lengthy"
+    @driver.find_element(:id, "topic_title").send_keys "Test Close Delete Archive topic"
     sleep(2)
 	puts "Saving topic .."
 	@driver.find_element(:name, "commit").click
@@ -122,32 +90,71 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(2)
 	puts "Entering discussion title"
     @driver.find_element(:id, "discussion_title").clear
-    @driver.find_element(:id, "discussion_title").send_keys "Discussion lengthy Discussion lengthyDiscussion lengthyDiscussion lengthy Discussion lengthyDiscussion lengthyDiscussion lengthyDiscussion lengthyDiscussion lengthy"
+    @driver.find_element(:id, "discussion_title").send_keys "Test Close Delete Archive discussion"
     sleep(2)
 	puts "Entering message for the title"
 	@driver.find_element(:id, "discussion_first_comment_attributes_text").clear
-    @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Message lengthy Message lengthyMessage lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy Message lengthy."
+    @driver.find_element(:id, "discussion_first_comment_attributes_text").send_keys "Test Close Delete Archive discussion"
     sleep(2)
 	puts "Saving discussion .."
 	@driver.find_element(:name, "commit").click
     puts "Discussion saved"
 	
-	#Comment as an admin
-	puts "Comment as an admin"
-    @driver.find_element(:xpath, "//textarea").clear
-    @driver.find_element(:xpath, "//textarea").send_keys "comment 1"
+	#Closing Discussion
 	sleep(2)
-	#@driver.find_element(:css, "div.bconnect-new-post-attach").click
-	#@driver.execute_script('$(\'input[type="file"]\').attr("style", "");');
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
 	sleep(1)
-	e = @driver.find_element(:css, "input[type='file']")
-	e.send_keys("C:\\Users\\Tripthi\\Pictures\\Brandconnect.jpe")
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[2]").click
+	sleep(2)
+	@driver.switch_to.alert.accept()
+	@driver.save_screenshot "Screenshots/brandconnectDiscussionClosed.png" 
+	puts "Brandconnect discussion Closed. Screen shot taken"
+	sleep(3)
+	puts "Admin logging out"
+	@driver.find_element(:xpath, "//a[@class='header-logout']").click
+	sleep(3)
+	
+	#Login to member side and Confirm that the Discusion was closed
+	puts "Logging to member side and confirming that the discussion is closed"
+	puts "Loading URL"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+	sleep(3)
+	#@driver.get(@base_url + "/home")	
+	puts "Entering member email"
+	@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
 	sleep(5)
-	puts "Sumitting the comment"
-	@driver.find_element(:css, "a.btn.btn-color.btn-md.bconnect-new-post-submit").click
+	@driver.find_element(:link, "Brand Connect").click
 	sleep(2)
-	puts "Comment submitted"
+	@driver.find_element(:xpath, "(//a[@title='Test Close Delete Archive discussion'])[1]").click
+	sleep(1)
+	@driver.save_screenshot "Screenshots/brandconnectDiscussionClosed_memberConfirm.png" 
+	sleep(1)
+	#deleting Brand connect Discussion
 	sleep(2)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
+	sleep(1)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[3]").click
+	sleep(2)
+	@driver.switch_to.alert.accept()
+	@driver.save_screenshot "Screenshots/brandconnectDiscussionDeleted.png" 
+	#@driver.action.send_keys(:enter).perform
+	puts "Brandconnect discussion deleted."
+	
+	#Archive Brand connect Topic
+	sleep(2)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
+	sleep(1)
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[2]").click
+	sleep(1)
+	@driver.save_screenshot "Screenshots/brandconnectTopicArchived.png" 
+	puts "Brandconnect Topic archived"
+	puts "Test passed"
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
@@ -156,9 +163,9 @@ class LoginFormTest < Test::Unit::TestCase
 			}
 =end
 			# if we passed the login, then we should see some welcomeText
-			welcomeText = @driver.find_element(:xpath, "//span[@class='bconnect-posts-item-links']/a").text
-			assert_equal("Comment", welcomeText)
-
+			#welcomeText = @driver.find_element(:xpath, "//div[@class='bconnect-topic-bar']").text
+			#assert_equal(" discussion", welcomeText)
+		assert @driver.find_element(:xpath, "//div[@class='bconnect-topic-bar']").text.include?('discussion')
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)
 			cbt_api.setScore(session_id, "pass")

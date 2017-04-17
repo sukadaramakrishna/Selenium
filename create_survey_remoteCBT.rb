@@ -62,18 +62,22 @@ class LoginFormTest < Test::Unit::TestCase
 			@driver.find_element(:name, "commit").click
 			
 			puts "Creating new mission hub"
+			sleep(3)
 			@driver.find_element(:link, "Mission Hubs").click
+			sleep(2)
     @driver.find_element(:link, "New Mission Hub").click
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").clear
     @driver.find_element(:xpath, "//div[@id='new_mission_hub']/div/div/div[2]/div/div/input").send_keys "Survey ABC"
-	sleep(1)
+	sleep(2)
    	@driver.find_element(:css, "button.btn-default").click
+	sleep(2)
 	@driver.find_element(:css, "li.test-hub-new-survey").click
-	sleep(3)
+	sleep(5)
 	puts "Creating new Survey"
     @driver.find_element(:link, "New Survey").click
 	sleep(7)
 	@driver.find_element(:css, "button.btn-edit").click
+	sleep(1)
     @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").clear
     @driver.find_element(:xpath, "//body[@id='admin']/div/div/div/div[2]/div/input").send_keys "Survey ABC"
 	#Single Answer Question
@@ -259,7 +263,7 @@ class LoginFormTest < Test::Unit::TestCase
 	puts "Adding start and end date"
     @driver.find_element(:id, "date-start").click
 	#@driver.find_element(:xpath, "//td[contains(text(), '19') and @class='day']").click
-	@driver.find_element(:xpath, "//td[@class='day active']/preceding-sibling::td[@class='day'][1]").click
+	@driver.find_element(:xpath, "//td[@class='active day']/preceding-sibling::td[@class='day'][1]").click
 	#@driver.find_element(:xpath, "//td[@class='day active']").click
 	puts "Adding group"
     @driver.find_element(:css, "button.mlogic-add-group").click

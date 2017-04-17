@@ -196,45 +196,65 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div/div[2]/div/div[4]/div[2]/div/div[2]/input").clear
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div/div[2]/div/div[4]/div[2]/div/div[2]/input").send_keys "MySmiley360"
 	sleep(1)
+
+	#scroll
+	sleep(1)
+	@driver.execute_script("scroll(0,1000);")
+	sleep(4)
+	puts "scrolled"
+	
+	#cookie notification
+	puts "Enable cookie notification"
+	@driver.find_element(:xpath, "(//input[@type='checkbox'])[4]").click
+	sleep(1)
+	puts "after cookie notification toggle on"
 	
 	#Features section
     #Brand connect Toggle
 	puts "Toggling Brand connect"
     @driver.find_element(:xpath, "(//input[@type='checkbox'])[5]").click
+	sleep(2)
+	puts "after bc toggle input toggled on"
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").send_keys "Brand Connect"
 	sleep(1)
 	#Tutorial Toggle
 	puts "Toggling Tutorial"
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[6]").click
+	sleep(2)
 	#Welcome Email Toggle
 	puts "Toggling welcome email and mission emails"
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[7]").click
+	sleep(2)
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.welcome_email.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.welcome_email.value']").send_keys "welcome"
 	sleep(1)
 	#Mission Acceptance Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[8]").click
+	sleep(2)
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_acceptance_email.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_acceptance_email.value']").send_keys "mission-acceptance"
 	sleep(1)
 	#Mission Completion Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[9]").click
+	sleep(2)
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_completion_email.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.mission_completion_email.value']").send_keys "mission-complete-dev"
 	sleep(1)
 	#Post Acceptance Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[10]").click
+	sleep(2)
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.post_accepted_email.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.post_accepted_email.value']").send_keys "activity-accepted"
 	sleep(1)
 	#Post Decline Email
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[11]").click
+	sleep(2)
 	@driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.post_declined_email.value']").clear
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.post_declined_email.value']").send_keys "activity-declined"
 	sleep(1)
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[12]").click
-	
+	sleep(2)
 	#scroll
 	sleep(1)
 	@driver.execute_script("scroll(0, 1300);")
@@ -249,6 +269,7 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[2]/div[3]/div/div[3]/div[2]/div/div[2]/input").send_keys "Blog"
 	sleep(1)
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[13]").click
+	sleep(2)
 	#FAQ
 	puts "Toggling FAQ"
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[2]/div[4]/div/div[2]/div[2]/div/div[2]/input").clear
@@ -257,6 +278,7 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[2]/div[4]/div/div[3]/div[2]/div/div[2]/input").send_keys "FAQ"
 	sleep(1)
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[14]").click
+	sleep(2)
 	
 	#scroll
 	sleep(1)
@@ -267,18 +289,32 @@ class LoginFormTest < Test::Unit::TestCase
 	puts "Adding age requirements"
 	@driver.find_element(:xpath, "//div[@class='group-box'][2]/div[1]/div[1]/div/div[1]/div/input[@ng-model='value.value']").clear
 	@driver.find_element(:xpath, "//div[@class='group-box'][2]/div[1]/div[1]/div/div[1]/div/input[@ng-model='value.value']").send_keys "13"
+	sleep(2)
 	
+
 	#Email Preferences
 	puts "Adding email preferences"
+	sleep(2)
 	@driver.find_element(:xpath, "(//input[@type='checkbox'])[15]").click
+	sleep(2)
+	puts "after toggling on email preferences"
+	puts "stops here"
+	#scroll
 	sleep(1)
-	@driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").clear
-    @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").send_keys "Twitter Parties"
+	@driver.execute_script("scroll(0, 400);")
+	sleep(4)
+	puts "scrolls"
+=begin
+	@driver.find_element(:xpath, "//body[@id='admin']/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").clear
+	sleep(1)
+    @driver.find_element(:xpath, "//body[@id='admin']/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").send_keys "Twitter Parties"
+	sleep(1)
     @driver.find_element(:css, "button.btn.btn-draggable-add").click
-    @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").clear
-    @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").send_keys "Special Promotions"
+	sleep(2)
+    @driver.find_element(:xpath, "//body[@id='admin']/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").clear
+    @driver.find_element(:xpath, "//body[@id='admin']/div[1]/div[2]/div/div[2]/div/div[3]/div[3]/div/div/div[2]/div[3]/div/input").send_keys "Special Promotions"
     @driver.find_element(:css, "button.btn.btn-draggable-add").click
-	
+=end	
 	#Member Flags
 	puts "Adding member Flags"
     @driver.find_element(:xpath, "//body[@id='admin']/div/div[2]/div/div[2]/div/div[3]/div[4]/div/div[2]/div/div/input").clear

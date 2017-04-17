@@ -16,55 +16,73 @@ class LoginFormTest < Test::Unit::TestCase
 	def test_login_form_test
 		begin
 			@config = YAML.load_file("config_smiley.yml")
-			@base_url = @config['member']['base_url']
+			@base_url = @config['admin']['base_url']
 			username = 'tripthi.shetty%40socialmedialink.com'
 			authkey = 'u283c7d7d4fafeb7'
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
-
-			caps["name"] = "Member Signin Via Email"
+			#caps['selenium-version'] = "2.53.4"
+			caps["name"] = "Test content of an activity"
 			caps["build"] = "1.0"
-			caps["browser_api_name"] = "FF46x64"
-			caps["os_api_name"] = "Win8.1"
-			caps["screen_resolution"] = "1920x1080"
+			caps["browser_api_name"] = "Chrome55x64"
+            caps["os_api_name"] = "Mac10.12"
+			caps["screen_resolution"] = "1920x1200"
 			caps["record_video"] = "true"
 			caps["record_network"] = "true"
 
-			driver = Selenium::WebDriver.for(:remote,
+			
+			@driver = Selenium::WebDriver.for(:remote,
 			:url => "http://#{username}:#{authkey}@hub.crossbrowsertesting.com:80/wd/hub",
 			:desired_capabilities => caps)
 
-			session_id = driver.session_id
-
+			session_id = @driver.session_id
+			
+			 @driver.file_detector = lambda do |args|
+			# args => ["/path/to/file"]
+			str = args.first.to_s    
+			str if File.exist?(str)
+	   end
 			score = "pass"
 			cbt_api = CBT_API.new
 			# maximize the window - DESKTOPS ONLY
-			#driver.manage.window.maximize
+			@driver.manage.window.maximize
 
-			puts "Loading URL"
-			driver.navigate.to(@base_url + "/home")
-			#@driver.get(@base_url + "/home")
-			# start login process by entering username
-			puts "Entering username"
-			driver.find_element(:id, "member_email").send_keys @config['member']['email']
-
-			# then we'll enter the password
-			puts "Entering password"
-			driver.find_element(:id, "member_password").send_keys @config['member']['pass']
-
-			# then we'll click the login button
-			puts "Logging in"
-			driver.find_element(:name, "commit").click
-
+			
+	
+	#activity content check
+	puts "Redirecting to the member page"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+    #@driver.find_element(:link, "or your email address").click
+	puts "Entering username"
+    @driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
+	puts "Entering password"
+    @driver.find_element(:id, "member_password").clear
+    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	puts "Member logged in"
+	@driver.save_screenshot "Screenshots/dashboard.png"
+	puts "Accepting the offer"
+	@driver.find_element(:link, "Activity Content Check (offer)").click
+	sleep(2)
+	@driver.save_screenshot "Screenshots/offerpage.png"
+    @driver.find_element(:css, "a.btn.btn-color.btn-lg").click
+	sleep(2)
+    @driver.save_screenshot "Screenshots/activitypage.png"
+	@driver.find_element(:css, "input.btn.btn-color.btn-lg.btn-block").click
+	sleep(2)
+	puts "Offer accepted and test passed"
+=begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
 			wait.until {
-				driver.find_element(:css, "a.btn.btn-color.btn-sidebar-profile")
+				@driver.find_element(:xpath, "//div[@class='mlogic-title ng-binding']")
 			}
-
-			# if we passed the login, then we should see some welcomeText
-			welcomeText = driver.find_element(:xpath, "//div[@class='content-offer js-content-offer']/h1").text
-			assert_equal("Offers for You", welcomeText)
+=end
+			# adding pass fail condition
+			welcomeText = @driver.find_element(:xpath, "//div[@class='sidebar-score mobile-minimize']/h2").text
+			assert_equal("Mission scores", welcomeText)
 
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)
@@ -74,7 +92,7 @@ class LoginFormTest < Test::Unit::TestCase
 		    puts ("#{ex.class}: #{ex.message}")
 		    cbt_api.setScore(session_id, "fail")
 		ensure     
-		    driver.quit
+		    @driver.quit
 		end
 	end
 end
