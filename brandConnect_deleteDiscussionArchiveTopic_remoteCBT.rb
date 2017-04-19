@@ -135,18 +135,87 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(1)
 	@driver.save_screenshot "Screenshots/brandconnectDiscussionClosed_memberConfirm.png" 
 	sleep(1)
+	puts "Member logging out"
+	@driver.find_element(:xpath, "//a[@class='header-logout']").click
+	sleep(3)
+	
+	#Logging back to application as an admin
+	puts "Logging back to member application as an admin"
+	puts "Loading URL"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+	sleep(3)
+	#@driver.get(@base_url + "/home")	
+	puts "Entering member email"
+	@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['admin']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['admin']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	@driver.find_element(:link, "Brand Connect").click
+	sleep(2)
+	
 	#deleting Brand connect Discussion
+	@driver.find_element(:xpath, "(//a[@title='Test Close Delete Archive discussion'])[1]").click
 	sleep(2)
 	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
 	sleep(1)
-	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[3]").click
+	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label/span/a[2]").click
 	sleep(2)
 	@driver.switch_to.alert.accept()
 	@driver.save_screenshot "Screenshots/brandconnectDiscussionDeleted.png" 
 	#@driver.action.send_keys(:enter).perform
 	puts "Brandconnect discussion deleted."
+	puts "Admin logging out"
+	@driver.find_element(:xpath, "//a[@class='header-logout']").click
+	sleep(3)
+	
+	#Logging back to application as a member
+	puts "Logging back to member application as a member to confirm discussion is deleted"
+	puts "Loading URL"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+	sleep(3)
+	#@driver.get(@base_url + "/home")	
+	puts "Entering member email"
+	@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	@driver.find_element(:link, "Brand Connect").click
+	sleep(2)
+	@driver.save_screenshot "Screenshots/brandconnectDiscussionDeleted_memberConfirm.png" 
+	sleep(1)
+	puts "Member logging out"
+	@driver.find_element(:xpath, "//a[@class='header-logout']").click
+	sleep(3)
+	
+	#Logging back to application as an admin
+	puts "Logging back to member application as an admin"
+	puts "Loading URL"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+	sleep(3)
+	#@driver.get(@base_url + "/home")	
+	puts "Entering member email"
+	@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['admin']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['admin']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	@driver.find_element(:link, "Brand Connect").click
+	sleep(2)
 	
 	#Archive Brand connect Topic
+	@driver.find_element(:xpath, "(//a[@title='Test Close Delete Archive topic'])[1]").click
+	sleep(2)
 	sleep(2)
 	@driver.find_element(:xpath, "//div[@class='bconnect-topic-header-title']/label").click
 	sleep(1)
@@ -154,7 +223,31 @@ class LoginFormTest < Test::Unit::TestCase
 	sleep(1)
 	@driver.save_screenshot "Screenshots/brandconnectTopicArchived.png" 
 	puts "Brandconnect Topic archived"
+	puts "Admin logging out"
+	@driver.find_element(:xpath, "//a[@class='header-logout']").click
+	sleep(3)
+	
+	#Logging back to application as a member
+	puts "Logging back to member application as a member to confirm discussion is deleted"
+	puts "Loading URL"
+	@driver.navigate.to(@config['member']['base_url']	+ "/home")
+	sleep(3)
+	#@driver.get(@base_url + "/home")	
+	puts "Entering member email"
+	@driver.find_element(:id, "member_email").clear
+    @driver.find_element(:id, "member_email").send_keys @config['member']['email']
+    @driver.find_element(:id, "member_password").clear
+	puts "Entering member password"
+    @driver.find_element(:id, "member_password").send_keys @config['member']['pass']
+	puts "Logging in"
+    @driver.find_element(:name, "commit").click
+	sleep(5)
+	@driver.find_element(:link, "Brand Connect").click
+	sleep(2)
+	@driver.save_screenshot "Screenshots/brandconnectTopicArchived_memberConfirm.png" 
+	sleep(1)
 	puts "Test passed"
+	
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
@@ -165,7 +258,7 @@ class LoginFormTest < Test::Unit::TestCase
 			# if we passed the login, then we should see some welcomeText
 			#welcomeText = @driver.find_element(:xpath, "//div[@class='bconnect-topic-bar']").text
 			#assert_equal(" discussion", welcomeText)
-		assert @driver.find_element(:xpath, "//div[@class='bconnect-topic-bar']").text.include?('discussion')
+		assert @driver.find_element(:xpath, "//div[@class='bconnect-description']/h1").text.include?('Brand')
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)
 			cbt_api.setScore(session_id, "pass")

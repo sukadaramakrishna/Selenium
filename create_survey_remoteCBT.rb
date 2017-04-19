@@ -22,7 +22,7 @@ class LoginFormTest < Test::Unit::TestCase
 
 			caps = Selenium::WebDriver::Remote::Capabilities.new
 			#caps['selenium-version'] = "2.53.4"
-			caps["name"] = "SharingAll Admin"
+			caps["name"] = "Create survey"
 			caps["build"] = "1.0"
 			caps["browser_api_name"] = "Chrome55x64"
             caps["os_api_name"] = "Mac10.12"
