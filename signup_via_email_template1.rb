@@ -32,7 +32,7 @@ describe "EmailSignup" do
     puts 'selenium test running'
 	
     @driver.get(@base_url + "/home")
-    @driver.find_element(:css, "button.login-switch-button").click
+    @driver.find_element(:xpath, "//button[@class='login-switch-button']").click
 	sleep(2)
 	@driver.find_element(:xpath, "(//input[@id='member_email'])[2]").click
     @driver.find_element(:xpath, "(//input[@id='member_email'])[2]").clear

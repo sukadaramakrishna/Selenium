@@ -71,7 +71,7 @@ def test_login_form_test
 			$driver.find_element(:link, "Mission Hubs").click
 			
 			cbt_api.createQuickOffer()
-			
+			cbt_api.previewQuickOffer()
 =begin
 			# let's wait here to ensure that the page is fully loaded before we move forward
 			wait = Selenium::WebDriver::Wait.new(:timout => 10)
@@ -80,8 +80,8 @@ def test_login_form_test
 			}
 =end
 			# adding pass fail condition
-			welcomeText = $driver.find_element(:xpath, "//div[@class='mlogic-title ng-binding']").text
-			assert_equal("Quick offer", welcomeText)
+			welcomeText = $driver.find_element(:xpath, "//div[@class='survey-sidebar-option test-activity-toggle-facebook']/label").text
+			assert_equal("Facebook", welcomeText)
 			
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)
@@ -208,5 +208,20 @@ class CBT_API
 	puts "Saved mission logic settings"
 	sleep(2)
 	end
-	
+	def previewQuickOffer
+	sleep(3)
+	$driver.find_element(:link, "Survey & Activity Pages").click
+	sleep(2)
+	$driver.find_element(:link, "Quick offer").click
+	sleep(2)
+	#Clicking preview of the quick offer's mission page
+	$driver.find_element(:xpath, "//a[@class='btn btn-invert btn-invert-preview']").click
+	sleep(2)
+	$driver.switch_to.window($driver.window_handles[1])
+	puts "Clicked Preview of the quick offer's mission page. Saved screen shot."
+	$driver.save_screenshot "Screenshots/previewQuickOfferMissionPage.png" 
+	sleep(2)
+	$driver.switch_to.window($driver.window_handles[0])
+	sleep(2)
+	end
 end

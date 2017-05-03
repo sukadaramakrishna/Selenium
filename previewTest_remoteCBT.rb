@@ -173,8 +173,10 @@ class CBT_API
 	puts "Clicked sharing tools"
 	$driver.find_element(:link, "Survey & Activity Pages").click
 	sleep(2)
+	puts "Clicked survey and activity pages"
 	$driver.find_element(:link, "Sharing Tools Activity").click
 	sleep(4)
+	puts "Clicked on sharing tools activity"
 	#Clicking preview of the activity on the mission page
 	$driver.find_element(:xpath, "//a[@class='btn btn-invert btn-invert-preview']").click
 	sleep(2)
@@ -195,7 +197,5 @@ class CBT_API
 	$driver.switch_to.window($driver.window_handles[0])
 	sleep(4)
 	end
-	def
 	
-	end
 end

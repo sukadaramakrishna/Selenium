@@ -305,7 +305,7 @@ class LoginFormTest < Test::Unit::TestCase
 =end
 			# if we passed the login, then we should see some welcomeText
 			welcomeText = @driver.find_element(:xpath, "//div[@class='mlogic-title ng-binding']").text
-			assert_equal("Premission Survey", welcomeText)
+			assert_equal("Prequal Survey", welcomeText)
 
 			puts "Taking Snapshot"
 			cbt_api.getSnapshot(session_id)

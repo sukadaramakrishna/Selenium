@@ -219,8 +219,8 @@ class LoginFormTest < Test::Unit::TestCase
     @driver.find_element(:css, "input.form-control.ng-pristine.ng-valid[ng-model='config.feature.values.custom_brand_connect_name.value']").send_keys "Brand Connect"
 	sleep(1)
 	#Tutorial Toggle
-	puts "Toggling Tutorial"
-	@driver.find_element(:xpath, "(//input[@type='checkbox'])[6]").click
+	#puts "Toggling Tutorial"
+	#@driver.find_element(:xpath, "(//input[@type='checkbox'])[6]").click
 	sleep(2)
 	#Welcome Email Toggle
 	puts "Toggling welcome email and mission emails"

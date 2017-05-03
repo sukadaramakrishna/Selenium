@@ -247,8 +247,6 @@ class LoginFormTest < Test::Unit::TestCase
 	@driver.find_element(:css, "textarea[ng-model='activity.instagram.seed_phrase']").send_keys "Share Smiley360 with your Instagram followers! Submit a link to your Instagram photo in the box below for 10 points. <em>Links must follow the format http://instagram.com/p/xxxxxxxxxx</em>"
 	sleep(2)
 	
-
-	
 	#scroll
 	@driver.execute_script("scroll(0, 1000);")
 	sleep(4)
