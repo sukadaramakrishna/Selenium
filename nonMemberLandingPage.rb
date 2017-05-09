@@ -123,7 +123,7 @@ class CBT_API
 			puts "Logging in"
 			$driver.find_element(:name, "commit").click
 			sleep(2)
-	puts "Creating new mission hub"
+			puts "Creating new mission hub"
 			
 			$driver.find_element(:link, "Mission Hubs").click
 	sleep(4)
