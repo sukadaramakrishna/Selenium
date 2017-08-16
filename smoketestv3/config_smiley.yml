@@ -1,0 +1,48 @@
+signup:
+  first_name: sansa										
+  last_name: stark
+  first_name_CA: simona16	
+  last_name_CA: baker
+  validate_first: sansa4
+  validate_last: stark
+  address1: 483 West, 37th street
+  address2: 33
+  address1_CA: 1010 Easy St
+  city_CA: Ottava
+  state_CA: Ontario
+  zip_CA: K1A 0B1
+  city: New York City
+  state: New York
+  zip: 10018
+  email_facebook: tripthi.shetty@socialmedialink.com
+  pass_facebook: qwerty$
+  email_twitter: sukada.testmember8@socialmedialink.com
+  pass_twitter: general1234
+  email_instagram: tripthi.shetty
+  pass_instagram: abcd1234
+  base_url_facebook: https://facebook.com
+  base_url_twitter: https://twitter.com
+admin:
+  base_url: https://admin-smiley.socialmedialink.com
+  email: tripsprint87smiley@yopmail.com
+  pass: General123$
+member: 
+  base_url: https://tripsprint87smiley.socialmedialink.com
+  resend_confirm_url: https://tripsprint81.dev.socialmedialink.com/members/confirmation/new
+  resend_confirm: sophie2.blake4@yopmail.com
+  email: sansa.stark@yopmail.com
+  pass: 12345678
+  change_pass: 87654321
+security:
+  base_url: https://admin.staging.socialmedialink.com
+  member_base_url: https://tripsprint74.staging.socialmedialink.com/
+  email: mike.ross@yopmail.com
+  pass: General1234$
+  member_email: sansa.stark@yopmail.com
+  member_pass: 12345678
+  super_email: admin@socialmedialink.com
+  super_pass: KG=NS_2^?_Ye4&sR
+  new_pass: General123$
+  
+  
+  
